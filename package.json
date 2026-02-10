@@ -6,5 +6,8 @@
   "scripts": {
     "build": "echo 'Static site — no build step'",
     "deploy": "wrangler pages deploy ."
+  },
+  "devDependencies": {
+    "wrangler": "^3.94.0"
   }
 }
