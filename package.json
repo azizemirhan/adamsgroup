@@ -4,6 +4,7 @@
   "private": true,
   "description": "Alfa Gayrimenkul — statik site, build adımı yok",
   "scripts": {
-    "build": "echo 'Static site — no build step'"
+    "build": "echo 'Static site — no build step'",
+    "deploy": "wrangler pages deploy ."
   }
 }
