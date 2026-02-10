@@ -1,0 +1,9 @@
+{
+  "name": "alfagayrimenkul",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Alfa Gayrimenkul — statik site, build adımı yok",
+  "scripts": {
+    "build": "echo 'Static site — no build step'"
+  }
+}
