@@ -1,8 +1,8 @@
-# Cloudflare Pages — Alfa Gayrimenkul
-# Wrangler ile deploy için (build çıktısı dist/)
+# Cloudflare Workers - Static assets deployment for alfagayrimenkul
 
 name = "alfagayrimenkul"
 compatibility_date = "2026-02-10"
 
-# Pages: yüklenecek statik dosya klasörü (gerekli alan)
-pages_build_output_dir = "dist"
+# Static site - tüm HTML, CSS, assets dist klasöründe
+[assets]
+directory = "./dist"

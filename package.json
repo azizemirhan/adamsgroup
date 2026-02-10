@@ -2,11 +2,11 @@
   "name": "alfagayrimenkul",
   "version": "1.0.0",
   "private": true,
-  "description": "Alfa Gayrimenkul — Web Sitesi",
+  "description": "Alfa Gayrimenkul Web Sitesi",
   "scripts": {
     "build": "node build.js",
-    "deploy": "wrangler pages deploy ./dist --project-name=alfagayrimenkul",
-    "preview": "npx serve dist"
+    "deploy": "wrangler deploy",
+    "preview": "npx serve ./dist"
   },
   "devDependencies": {
     "wrangler": "^3.100.0"
