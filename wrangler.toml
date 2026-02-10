@@ -6,7 +6,3 @@ compatibility_date = "2026-02-10"
 
 # Pages: yüklenecek statik dosya klasörü (gerekli alan)
 pages_build_output_dir = "dist"
-
-# Workers assets (isteğe bağlı)
-[assets]
-directory = "./dist"
