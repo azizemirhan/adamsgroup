@@ -1,0 +1,14 @@
+# Cloudflare Pages / Wrangler — Alfa Gayrimenkul
+# GitHub entegrasyonu ile yayınlama için
+# Dokümantasyon: https://developers.cloudflare.com/pages/functions/wrangler-configuration
+
+name = "alfagayrimenkul"
+compatibility_date = "2024-01-01"
+
+# Statik dosyaların bulunduğu klasör (repo kökü = .)
+# Build yoksa bu klasör doğrudan yayınlanır
+pages_build_output_dir = "."
+
+# İsteğe bağlı: production / preview ortam değişkenleri
+# [env.production]
+# [env.preview]
