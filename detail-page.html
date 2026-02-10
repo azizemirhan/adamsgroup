@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alfa Gayrimenkul</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/header.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
+    <link rel="stylesheet" href="assets/css/detail.css">
+
+<body class="page-detail">
+    <!-- ═══════════════════════════════════════
+     TOPBAR
+     ═══════════════════════════════════════ -->
+    <div class="topbar" id="topbar">
+        <div class="topbar-inner">
+            <div class="topbar-left">
+                <div class="topbar-contact">
+                    <a href="tel:+902121234567" class="topbar-link">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                        </svg>
+                        <span>+90 212 123 45 67</span>
+                    </a>
+                    <a href="mailto:info@alfagayrimenkul.com" class="topbar-link">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                            <polyline points="22,6 12,13 2,6" />
+                        </svg>
+                        <span>info@alfagayrimenkul.com</span>
+                    </a>
+                </div>
+            </div>
+            <div class="topbar-right">
+                <div class="topbar-social">
+                    <a href="#" class="social-link" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                            <rect x="2" y="9" width="4" height="12" />
+                            <circle cx="4" cy="4" r="2" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="lang-selector" id="langSelector">
+                    <button class="lang-current" aria-haspopup="true" aria-expanded="false">
+                        <span>🇹🇷</span>
+                        <span>TÜRKÇE</span>
+                        <span class="lang-arrow"></span>
+                    </button>
+                    <div class="lang-dropdown">
+                        <a href="#" class="lang-option active">
+                            <span>🇹🇷</span>
+                            <span>Türkçe</span>
+                        </a>
+                        <a href="#" class="lang-option">
+                            <span>🇬🇧</span>
+                            <span>English</span>
+                        </a>
+                        <a href="#" class="lang-option">
+                            <span>🇷🇺</span>
+                            <span>Русский</span>
+                        </a>
+                        <a href="#" class="lang-option">
+                            <span>🇸🇦</span>
+                            <span>العربية</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+     HEADER
+     ═══════════════════════════════════════ -->
+    <header class="header" id="header">
+        <div class="header-inner">
+
+            <!-- LEFT NAV -->
+            <nav class="nav-left" aria-label="Sol menü">
+                <ul role="menubar">
+                    <!-- SATILIK -->
+                    <li class="nav-item" data-mega="satilik">
+                        <a class="nav-link" href="#" role="menuitem" aria-haspopup="true" aria-expanded="false">
+                            Satılık <span class="arrow"></span>
+                        </a>
+                        <!-- MEGA MENU — SATILIK (Dark Theme) -->
+                        <div class="mega-menu" id="mega-satilik" role="menu">
+                            <div class="mega-menu-inner">
+                                <div class="mega-menu-grid">
+                                    <div class="mega-category">
+                                        <h3 class="mega-category-title">
+                                            <svg class="cat-icon" viewBox="0 0 24 24">
+                                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                                                <polyline points="9 22 9 12 15 12 15 22" />
+                                            </svg>
+                                            Konut
+                                        </h3>
+                                        <ul class="mega-category-list">
+                                            <li><a href="list-page-final.html?tip=satilik&kategori=daire">Daire</a></li>
+                                            <li><a href="list-page-final.html?tip=satilik&kategori=villa">Villa</a></li>
+                                            <li><a href="list-page-final.html?tip=satilik&kategori=mustakil-ev">Müstakil Ev</a></li>
+                                            <li><a href="list-page-final.html?tip=satilik&kategori=rezidans">Rezidans</a></li>
+                                            <li><a href="list-page-final.html?tip=satilik&kategori=yali-kosk">Yalı & Köşk</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="mega-category">
+                                        <h3 class="mega-category-title">
+                                            <svg class="cat-icon" viewBox="0 0 24 24">
+                                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+                                                <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+                                            </svg>
+                                            Ticari
+                                        </h3>
+                                        <ul class="mega-category-list">
+                                            <li><a href="list-page-final.html?tip=satilik&kategori=ofis">Ofis</a></li>
+                                            <li><a href="list-page-final.html?tip=satilik&kategori=dukkan">Dükkan</a></li>
+                                            <li><a href="list-page-final.html?tip=satilik&kategori=depo-antrepo">Depo & Antrepo</a></li>
+                                            <li><a href="list-page-final.html?tip=satilik&kategori=fabrika">Fabrika</a></li>
+                                            <li><a href="list-page-final.html?tip=satilik&kategori=plaza-kati">Plaza Katı</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="mega-category">
+                                        <h3 class="mega-category-title">
+                                            <svg class="cat-icon" viewBox="0 0 24 24">
+                                                <path
+                                                    d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                                            </svg>
+                                            Arsa
+                                        </h3>
+                                        <ul class="mega-category-list">
+                                            <li><a href="list-page-final.html?tip=satilik&kategori=imarli-arsa">İmarlı Arsa</a></li>
+                                            <li><a href="list-page-final.html?tip=satilik&kategori=tarla">Tarla</a></li>
+                                            <li><a href="list-page-final.html?tip=satilik&kategori=bag-bahce">Bağ & Bahçe</a></li>
+                                            <li><a href="list-page-final.html?tip=satilik&kategori=ticari-imarli">Ticari İmarlı</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="mega-featured">
+                                        <a href="list-page-final.html?tip=satilik&kategori=villa" class="mega-featured-card">
+                                            <img class="mega-featured-img"
+                                                src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=400&h=300&fit=crop&q=80"
+                                                alt="Öne Çıkan İlan" loading="lazy">
+                                            <div class="mega-featured-overlay">
+                                                <span class="mega-featured-badge">Öne Çıkan</span>
+                                                <h4 class="mega-featured-title">Boğaz Manzaralı Triplex Villa</h4>
+                                                <span class="mega-featured-price">₺ 42.500.000</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- KİRALIK -->
+                    <li class="nav-item" data-mega="kiralik">
+                        <a class="nav-link" href="#" role="menuitem" aria-haspopup="true" aria-expanded="false">
+                            Kiralık <span class="arrow"></span>
+                        </a>
+                        <!-- MEGA MENU — KİRALIK (Dark Theme) -->
+                        <div class="mega-menu" id="mega-kiralik" role="menu">
+                            <div class="mega-menu-inner">
+                                <div class="mega-menu-grid">
+                                    <div class="mega-category">
+                                        <h3 class="mega-category-title">
+                                            <svg class="cat-icon" viewBox="0 0 24 24">
+                                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                                                <polyline points="9 22 9 12 15 12 15 22" />
+                                            </svg>
+                                            Konut
+                                        </h3>
+                                        <ul class="mega-category-list">
+                                            <li><a href="list-page-final.html?tip=kiralik&kategori=daire">Daire</a></li>
+                                            <li><a href="list-page-final.html?tip=kiralik&kategori=villa">Villa</a></li>
+                                            <li><a href="list-page-final.html?tip=kiralik&kategori=rezidans">Rezidans</a></li>
+                                            <li><a href="list-page-final.html?tip=kiralik&kategori=studyo">Stüdyo</a></li>
+                                            <li><a href="list-page-final.html?tip=kiralik&kategori=esyali-daire">Eşyalı Daire</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="mega-category">
+                                        <h3 class="mega-category-title">
+                                            <svg class="cat-icon" viewBox="0 0 24 24">
+                                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+                                                <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+                                            </svg>
+                                            Ticari
+                                        </h3>
+                                        <ul class="mega-category-list">
+                                            <li><a href="list-page-final.html?tip=kiralik&kategori=ofis">Ofis</a></li>
+                                            <li><a href="list-page-final.html?tip=kiralik&kategori=dukkan">Dükkan</a></li>
+                                            <li><a href="list-page-final.html?tip=kiralik&kategori=showroom">Showroom</a></li>
+                                            <li><a href="list-page-final.html?tip=kiralik&kategori=coworking">Co-Working</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="mega-category">
+                                        <h3 class="mega-category-title">
+                                            <svg class="cat-icon" viewBox="0 0 24 24">
+                                                <circle cx="12" cy="12" r="10" />
+                                                <path d="M12 6v6l4 2" />
+                                            </svg>
+                                            Kısa Dönem
+                                        </h3>
+                                        <ul class="mega-category-list">
+                                            <li><a href="list-page-final.html?tip=kiralik&kategori=gunluk-kiralik">Günlük Kiralık</a></li>
+                                            <li><a href="list-page-final.html?tip=kiralik&kategori=haftalik-kiralik">Haftalık Kiralık</a></li>
+                                            <li><a href="list-page-final.html?tip=kiralik&kategori=sezonluk">Sezonluk</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="mega-featured">
+                                        <a href="list-page-final.html?tip=kiralik&kategori=daire" class="mega-featured-card">
+                                            <img class="mega-featured-img"
+                                                src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400&h=300&fit=crop&q=80"
+                                                alt="Öne Çıkan İlan" loading="lazy">
+                                            <div class="mega-featured-overlay">
+                                                <span class="mega-featured-badge">Yeni İlan</span>
+                                                <h4 class="mega-featured-title">Kadıköy Merkez 3+1 Lüks Daire</h4>
+                                                <span class="mega-featured-price">₺ 45.000 / ay</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- YATIRIM YAP -->
+
+
+                    <!-- KURUMSAL -->
+                    <li class="nav-item" data-mega="kurumsal">
+                        <a class="nav-link" href="#" role="menuitem" aria-haspopup="true" aria-expanded="false">
+                            Kurumsal <span class="arrow"></span>
+                        </a>
+                        <!-- MEGA MENU — KURUMSAL (White Theme) -->
+                        <div class="mega-menu white" id="mega-kurumsal" role="menu">
+                            <div class="mega-menu-inner">
+                                <div class="mega-menu-grid">
+                                    <div class="mega-category">
+                                        <h3 class="mega-category-title">
+                                            Kurumsal Bilgiler
+                                            <svg class="cat-arrow" viewBox="0 0 24 24">
+                                                <polyline points="9 18 15 12 9 6" />
+                                            </svg>
+                                        </h3>
+                                        <ul class="mega-category-list">
+                                            <li><a href="ilke-ve-degerlerimiz.html">İlke ve Değerlerimiz</a></li>
+                                            <li><a href="faaliyet-alanlarimiz.html">Faaliyet Alanlarımız</a></li>
+                                            <li><a href="hakkimizda.html">Hakkımızda</a></li>
+                                            <li><a href="demo-sayfa.html?sayfa=Ekibimiz">Ekibimiz</a></li>
+                                            <li><a href="kariyer.html">Kariyer</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="mega-category">
+                                        <h3 class="mega-category-title">
+                                            Ortaklık
+                                            <svg class="cat-arrow" viewBox="0 0 24 24">
+                                                <polyline points="9 18 15 12 9 6" />
+                                            </svg>
+                                        </h3>
+                                        <ul class="mega-category-list">
+                                            <li><a href="demo-sayfa.html?sayfa=Neden%20Alfa%20Gayrimenkul">Neden Alfa Gayrimenkul</a></li>
+                                            <li><a href="demo-sayfa.html?sayfa=İş%20Ortağımız%20Olun">İş Ortağımız Olun</a></li>
+                                            <li><a href="demo-sayfa.html?sayfa=Franchise">Franchise</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="mega-category">
+                                        <h3 class="mega-category-title">
+                                            Hizmetler
+                                            <svg class="cat-arrow" viewBox="0 0 24 24">
+                                                <polyline points="9 18 15 12 9 6" />
+                                            </svg>
+                                        </h3>
+                                        <ul class="mega-category-list">
+                                            <li><a href="demo-sayfa.html?sayfa=Finansal%20ve%20Hukuksal%20Hizmetler">Finansal ve Hukuksal Hizmetler</a></li>
+                                            <li><a href="demo-sayfa.html?sayfa=Gayrimenkul">Gayrimenkul</a></li>
+                                            <li><a href="demo-sayfa.html?sayfa=Satın%20Alma%20Rehberi">Satın Alma Rehberi</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- LOGO -->
+            <div class="logo-wrapper">
+                <a href="index.html" class="logo" aria-label="Alfa Gayrimenkul Ana Sayfa">
+                    <div class="logo-mark">
+                        <img src="assets/images/logo.png" alt="Alfa Gayrimenkul Logo">
+                    </div>
+                </a>
+            </div>
+
+
+            <!-- RIGHT NAV -->
+            <nav class="nav-right" aria-label="Sağ menü">
+                <ul role="menubar">
+                    <li class="nav-item" data-mega="yatirim">
+                        <a class="nav-link" href="#" role="menuitem" aria-haspopup="true" aria-expanded="false">
+                            Yatırım Yap <span class="arrow"></span>
+                        </a>
+                        <!-- MEGA MENU — YATIRIM YAP (White Theme) -->
+                        <div class="mega-menu white" id="mega-yatirim" role="menu">
+                            <div class="mega-menu-inner">
+                                <div class="mega-menu-grid">
+                                    <div class="mega-category">
+                                        <h3 class="mega-category-title">
+                                            Gayrimenkul Yatırımı
+                                            <svg class="cat-arrow" viewBox="0 0 24 24">
+                                                <polyline points="9 18 15 12 9 6" />
+                                            </svg>
+                                        </h3>
+                                        <ul class="mega-category-list">
+                                            <li class="has-submenu">
+                                                <a href="demo-sayfa.html?sayfa=Kira%20Garantili%20Sistemlerimiz">
+                                                    Kira Garantili Sistemlerimiz
+                                                    <svg class="sub-arrow" viewBox="0 0 24 24">
+                                                        <polyline points="9 18 15 12 9 6" />
+                                                    </svg>
+                                                </a>
+                                                <div class="submenu">
+                                                    <ul class="submenu-list">
+                                                        <li><a href="demo-sayfa.html?sayfa=Yatırım%20Planları">Yatırım Planları</a></li>
+                                                        <li><a href="demo-sayfa.html?sayfa=Getiri%20Hesaplama">Getiri Hesaplama</a></li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                            <li><a href="demo-sayfa.html?sayfa=Yatırımcılar%20İçin">Yatırımcılar İçin</a></li>
+                                            <li><a href="demo-sayfa.html?sayfa=Ticari%20Gayrimenkul">Ticari Gayrimenkul</a></li>
+                                            <li><a href="demo-sayfa.html?sayfa=Arsa%20Yatırımı">Arsa Yatırımı</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="mega-category">
+                                        <h3 class="mega-category-title">
+                                            Yatırımcılar İçin İpuçları
+                                            <svg class="cat-arrow" viewBox="0 0 24 24">
+                                                <polyline points="9 18 15 12 9 6" />
+                                            </svg>
+                                        </h3>
+                                        <ul class="mega-category-list">
+                                            <li><a href="demo-sayfa.html?sayfa=Sizin%20Yatırım%20Önerileriniz">Sizin Yatırım Önerileriniz</a></li>
+                                            <li><a href="demo-sayfa.html?sayfa=Yatırım%20Fırsatları">Yatırım Fırsatları</a></li>
+                                            <li><a href="demo-sayfa.html?sayfa=Nasıl%20Yatırım%20Yapılır">Nasıl Yatırım Yapılır?</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog-list.html" role="menuitem">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="iletisim.html" role="menuitem">İletişim</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- HAMBURGER BUTTON (Mobile) -->
+            <button class="hamburger" id="hamburger" aria-label="Menü aç/kapa" aria-expanded="false">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+
+        </div>
+    </header>
+
+    <!-- MOBILE OVERLAY -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <!-- MOBILE MENU -->
+    <nav class="mobile-menu" id="mobileMenu" aria-label="Mobil menü">
+        <!-- Mobile Contact Info -->
+        <div class="mobile-topbar-info">
+            <a href="tel:+902121234567" class="mobile-contact-item">
+                <svg viewBox="0 0 24 24">
+                    <path
+                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                </svg>
+                +90 212 123 45 67
+            </a>
+            <a href="mailto:info@alfagayrimenkul.com" class="mobile-contact-item">
+                <svg viewBox="0 0 24 24">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                    <polyline points="22,6 12,13 2,6" />
+                </svg>
+                info@alfagayrimenkul.com
+            </a>
+        </div>
+
+        <ul class="mobile-menu-list">
+            <!-- Mobile Satılık -->
+            <li class="mobile-menu-item" data-mobile-sub="satilik">
+                <a class="mobile-menu-link" href="#">
+                    Satılık
+                    <svg class="mobile-arrow" viewBox="0 0 24 24">
+                        <polyline points="6 9 12 15 18 9" />
+                    </svg>
+                </a>
+                <div class="mobile-sub">
+                    <ul class="mobile-sub-list">
+                        <span class="mobile-sub-title">Konut</span>
+                        <li><a href="list-page-final.html?tip=satilik&kategori=daire">Daire</a></li>
+                        <li><a href="list-page-final.html?tip=satilik&kategori=villa">Villa</a></li>
+                        <li><a href="list-page-final.html?tip=satilik&kategori=mustakil-ev">Müstakil Ev</a></li>
+                        <li><a href="list-page-final.html?tip=satilik&kategori=rezidans">Rezidans</a></li>
+                        <li><a href="list-page-final.html?tip=satilik&kategori=yali-kosk">Yalı & Köşk</a></li>
+                        <span class="mobile-sub-title">Ticari</span>
+                        <li><a href="list-page-final.html?tip=satilik&kategori=ofis">Ofis</a></li>
+                        <li><a href="list-page-final.html?tip=satilik&kategori=dukkan">Dükkan</a></li>
+                        <li><a href="list-page-final.html?tip=satilik&kategori=depo-antrepo">Depo & Antrepo</a></li>
+                        <span class="mobile-sub-title">Arsa</span>
+                        <li><a href="list-page-final.html?tip=satilik&kategori=imarli-arsa">İmarlı Arsa</a></li>
+                        <li><a href="list-page-final.html?tip=satilik&kategori=tarla">Tarla</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <!-- Mobile Kiralık -->
+            <li class="mobile-menu-item" data-mobile-sub="kiralik">
+                <a class="mobile-menu-link" href="#">
+                    Kiralık
+                    <svg class="mobile-arrow" viewBox="0 0 24 24">
+                        <polyline points="6 9 12 15 18 9" />
+                    </svg>
+                </a>
+                <div class="mobile-sub">
+                    <ul class="mobile-sub-list">
+                        <span class="mobile-sub-title">Konut</span>
+                        <li><a href="list-page-final.html?tip=kiralik&kategori=daire">Daire</a></li>
+                        <li><a href="list-page-final.html?tip=kiralik&kategori=villa">Villa</a></li>
+                        <li><a href="list-page-final.html?tip=kiralik&kategori=rezidans">Rezidans</a></li>
+                        <li><a href="list-page-final.html?tip=kiralik&kategori=esyali-daire">Eşyalı Daire</a></li>
+                        <span class="mobile-sub-title">Ticari</span>
+                        <li><a href="list-page-final.html?tip=kiralik&kategori=ofis">Ofis</a></li>
+                        <li><a href="list-page-final.html?tip=kiralik&kategori=showroom">Showroom</a></li>
+                        <span class="mobile-sub-title">Kısa Dönem</span>
+                        <li><a href="list-page-final.html?tip=kiralik&kategori=gunluk-kiralik">Günlük Kiralık</a></li>
+                        <li><a href="list-page-final.html?tip=kiralik&kategori=sezonluk">Sezonluk</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <!-- Mobile Yatırım Yap -->
+            <li class="mobile-menu-item" data-mobile-sub="yatirim">
+                <a class="mobile-menu-link" href="#">
+                    Yatırım Yap
+                    <svg class="mobile-arrow" viewBox="0 0 24 24">
+                        <polyline points="6 9 12 15 18 9" />
+                    </svg>
+                </a>
+                <div class="mobile-sub">
+                    <ul class="mobile-sub-list">
+                        <span class="mobile-sub-title">Gayrimenkul Yatırımı</span>
+                        <li><a href="demo-sayfa.html?sayfa=Kira%20Garantili%20Sistemlerimiz">Kira Garantili Sistemlerimiz</a></li>
+                        <li><a href="demo-sayfa.html?sayfa=Yatırımcılar%20İçin">Yatırımcılar İçin</a></li>
+                        <li><a href="demo-sayfa.html?sayfa=Ticari%20Gayrimenkul">Ticari Gayrimenkul</a></li>
+                        <li><a href="demo-sayfa.html?sayfa=Arsa%20Yatırımı">Arsa Yatırımı</a></li>
+                        <span class="mobile-sub-title">Yatırımcılar İçin İpuçları</span>
+                        <li><a href="demo-sayfa.html?sayfa=Sizin%20Yatırım%20Önerileriniz">Sizin Yatırım Önerileriniz</a></li>
+                        <li><a href="demo-sayfa.html?sayfa=Yatırım%20Fırsatları">Yatırım Fırsatları</a></li>
+                        <li><a href="demo-sayfa.html?sayfa=Nasıl%20Yatırım%20Yapılır">Nasıl Yatırım Yapılır?</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <!-- Mobile Kurumsal -->
+            <li class="mobile-menu-item" data-mobile-sub="kurumsal">
+                <a class="mobile-menu-link" href="#">
+                    Kurumsal
+                    <svg class="mobile-arrow" viewBox="0 0 24 24">
+                        <polyline points="6 9 12 15 18 9" />
+                    </svg>
+                </a>
+                <div class="mobile-sub">
+                    <ul class="mobile-sub-list">
+                        <span class="mobile-sub-title">Kurumsal Bilgiler</span>
+                        <li><a href="ilke-ve-degerlerimiz.html">İlke ve Değerlerimiz</a></li>
+                        <li><a href="faaliyet-alanlarimiz.html">Faaliyet Alanlarımız</a></li>
+                        <li><a href="hakkimizda.html">Hakkımızda</a></li>
+                        <li><a href="demo-sayfa.html?sayfa=Ekibimiz">Ekibimiz</a></li>
+                        <li><a href="kariyer.html">Kariyer</a></li>
+                        <span class="mobile-sub-title">Ortaklık</span>
+                        <li><a href="demo-sayfa.html?sayfa=Neden%20Alfa%20Gayrimenkul">Neden Alfa Gayrimenkul</a></li>
+                        <li><a href="demo-sayfa.html?sayfa=İş%20Ortağımız%20Olun">İş Ortağımız Olun</a></li>
+                        <li><a href="demo-sayfa.html?sayfa=Franchise">Franchise</a></li>
+                        <span class="mobile-sub-title">Hizmetler</span>
+                        <li><a href="demo-sayfa.html?sayfa=Finansal%20ve%20Hukuksal%20Hizmetler">Finansal ve Hukuksal Hizmetler</a></li>
+                        <li><a href="demo-sayfa.html?sayfa=Gayrimenkul">Gayrimenkul</a></li>
+                        <li><a href="demo-sayfa.html?sayfa=Satın%20Alma%20Rehberi">Satın Alma Rehberi</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <li class="mobile-menu-item">
+                <a class="mobile-menu-link" href="blog-list.html">Blog</a>
+            </li>
+            <li class="mobile-menu-item">
+                <a class="mobile-menu-link" href="iletisim.html">İletişim</a>
+            </li>
+        </ul>
+
+        <a class="mobile-cta" href="https://wa.me/905300215291" target="_blank" rel="noopener">
+            <svg class="mobile-cta-icon" viewBox="0 0 24 24">
+                <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+            </svg>
+            Bize Ulaşın
+        </a>
+
+        <!-- Mobile Language Selector -->
+        <div class="mobile-lang">
+            <div class="mobile-lang-title">Dil Seçimi</div>
+            <div class="mobile-lang-options">
+                <a href="#" class="mobile-lang-option active">
+                    <span>🇹🇷</span>
+                    <span>Türkçe</span>
+                </a>
+                <a href="#" class="mobile-lang-option">
+                    <span>🇬🇧</span>
+                    <span>English</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="mobile-decoration">
+            <span class="mobile-decoration-line"></span>
+            <span class="mobile-decoration-text">Alfa Gayrimenkul © 2026</span>
+        </div>
+    </nav>
+
+
+    <nav class="breadcrumb-bar" aria-label="Breadcrumb">
+        <div class="breadcrumb-bar-inner">
+            <a href="index.html">Anasayfa</a>
+            <span class="breadcrumb-sep">›</span>
+            <a href="list-page-final.html?tip=satilik">Satılık</a>
+            <span class="breadcrumb-sep">›</span>
+            <a href="list-page-final.html?tip=satilik&kategori=daire">Daire</a>
+            <span class="breadcrumb-sep">›</span>
+            <span class="breadcrumb-current">Liman'da Doğalgazlı Ve Tam Eşyalı Satılık 3+1 Fırsat Dubleks</span>
+        </div>
+    </nav>
+
+
+    <!-- ═══════════════════════════════════════
+           PROPERTY HERO
+           ═══════════════════════════════════════ -->
+    <section class="prop-hero">
+        <div class="prop-hero-inner">
+            <div class="prop-hero-left">
+                <span class="prop-badge">Satılık</span>
+                <h1 class="prop-title">Liman'da Doğalgazlı Ve Tam Eşyalı Satılık 3+1 Fırsat Dubleks</h1>
+                <div class="prop-location">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                        <circle cx="12" cy="10" r="3" />
+                    </svg>
+                    Türkiye, Konyaaltı, Antalya, Liman
+                </div>
+            </div>
+            <div class="prop-hero-right">
+                <div class="prop-price">13.000.000 ₺</div>
+                <div class="prop-ref">Emlak No: <strong>GRE373674</strong></div>
+                <div class="prop-actions">
+                    <button class="prop-action-btn" aria-label="Favorilere Ekle"><svg viewBox="0 0 24 24">
+                            <path
+                                d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                        </svg></button>
+                    <button class="prop-action-btn" aria-label="Paylaş"><svg viewBox="0 0 24 24">
+                            <circle cx="18" cy="5" r="3" />
+                            <circle cx="6" cy="12" r="3" />
+                            <circle cx="18" cy="19" r="3" />
+                            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
+                            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+                        </svg></button>
+                    <button class="prop-action-btn" aria-label="Yazdır"><svg viewBox="0 0 24 24">
+                            <polyline points="6 9 6 2 18 2 18 9" />
+                            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
+                            <rect x="6" y="14" width="12" height="8" />
+                        </svg></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════
+           MAIN LAYOUT
+           ═══════════════════════════════════════ -->
+    <div class="detail-layout">
+        <div class="detail-layout-top">
+        <!-- ─── LEFT CONTENT ─── -->
+        <main class="detail-content">
+
+            <!-- Gallery -->
+            <div class="gallery" id="gallery">
+                <div class="gallery-main" id="galleryMain">
+                    <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200&h=675&fit=crop&q=85"
+                        alt="Ana Fotoğraf" id="mainImage">
+                    <button class="gallery-nav gallery-prev" id="galleryPrev"><svg viewBox="0 0 24 24">
+                            <polyline points="15 18 9 12 15 6" />
+                        </svg></button>
+                    <button class="gallery-nav gallery-next" id="galleryNext"><svg viewBox="0 0 24 24">
+                            <polyline points="9 18 15 12 9 6" />
+                        </svg></button>
+                    <div class="gallery-badge-row">
+                        <button class="gallery-icon-btn" aria-label="Tam Ekran"><svg viewBox="0 0 24 24">
+                                <polyline points="15 3 21 3 21 9" />
+                                <polyline points="9 21 3 21 3 15" />
+                                <line x1="21" y1="3" x2="14" y2="10" />
+                                <line x1="3" y1="21" x2="10" y2="14" />
+                            </svg></button>
+                        <button class="gallery-icon-btn" aria-label="Harita"><svg viewBox="0 0 24 24">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                <circle cx="12" cy="10" r="3" />
+                            </svg></button>
+                    </div>
+                    <div class="gallery-counter"><svg viewBox="0 0 24 24">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                            <circle cx="8.5" cy="8.5" r="1.5" />
+                            <polyline points="21 15 16 10 5 21" />
+                        </svg> <span id="counterText">1 / 10</span></div>
+                </div>
+                <div class="gallery-thumbs" id="thumbStrip">
+                    <div class="gallery-thumb active" data-idx="0"><img
+                            src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=200&h=140&fit=crop&q=60"
+                            alt="Thumb 1"></div>
+                    <div class="gallery-thumb" data-idx="1"><img
+                            src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=200&h=140&fit=crop&q=60"
+                            alt="Thumb 2"></div>
+                    <div class="gallery-thumb" data-idx="2"><img
+                            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=200&h=140&fit=crop&q=60"
+                            alt="Thumb 3"></div>
+                    <div class="gallery-thumb" data-idx="3"><img
+                            src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=200&h=140&fit=crop&q=60"
+                            alt="Thumb 4"></div>
+                    <div class="gallery-thumb" data-idx="4"><img
+                            src="https://images.unsplash.com/photo-1613977257363-707ba9348227?w=200&h=140&fit=crop&q=60"
+                            alt="Thumb 5"></div>
+                    <div class="gallery-thumb" data-idx="5"><img
+                            src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=200&h=140&fit=crop&q=60"
+                            alt="Thumb 6"></div>
+                    <div class="gallery-thumb" data-idx="6"><img
+                            src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=200&h=140&fit=crop&q=60"
+                            alt="Thumb 7"></div>
+                    <div class="gallery-thumb" data-idx="7"><img
+                            src="https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=200&h=140&fit=crop&q=60"
+                            alt="Thumb 8"></div>
+                    <div class="gallery-thumb" data-idx="8"><img
+                            src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=200&h=140&fit=crop&q=60"
+                            alt="Thumb 9"></div>
+                    <div class="gallery-thumb" data-idx="9"><img
+                            src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=200&h=140&fit=crop&q=60"
+                            alt="Thumb 10"></div>
+                </div>
+            </div>
+
+            <!-- Quick Facts -->
+            <div class="quick-facts">
+                <div class="quick-fact">
+                    <div class="quick-fact-icon"><svg viewBox="0 0 24 24">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                            <polyline points="9 22 9 12 15 12 15 22" />
+                        </svg></div>
+                    <span class="quick-fact-val">Daire</span>
+                    <span class="quick-fact-label">İlan Türü</span>
+                </div>
+                <div class="quick-fact">
+                    <div class="quick-fact-icon"><svg viewBox="0 0 24 24">
+                            <rect x="2" y="3" width="20" height="14" rx="2" />
+                            <line x1="8" y1="21" x2="16" y2="21" />
+                            <line x1="12" y1="17" x2="12" y2="21" />
+                        </svg></div>
+                    <span class="quick-fact-val">4</span>
+                    <span class="quick-fact-label">Oda</span>
+                </div>
+                <div class="quick-fact">
+                    <div class="quick-fact-icon"><svg viewBox="0 0 24 24">
+                            <path d="M4 12h16a1 1 0 0 1 1 1v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-3a1 1 0 0 1 1-1z" />
+                            <path d="M3.5 12V7a4.5 4.5 0 0 1 9 0v5" />
+                            <line x1="18" y1="7" x2="18" y2="12" />
+                        </svg></div>
+                    <span class="quick-fact-val">3</span>
+                    <span class="quick-fact-label">Yatak Odası</span>
+                </div>
+                <div class="quick-fact">
+                    <div class="quick-fact-icon"><svg viewBox="0 0 24 24">
+                            <path d="M22 12H2" />
+                            <path
+                                d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z" />
+                        </svg></div>
+                    <span class="quick-fact-val">2</span>
+                    <span class="quick-fact-label">Banyo</span>
+                </div>
+                <div class="quick-fact">
+                    <div class="quick-fact-icon"><svg viewBox="0 0 24 24">
+                            <rect x="3" y="3" width="18" height="18" rx="2" />
+                            <line x1="3" y1="12" x2="21" y2="12" />
+                            <line x1="12" y1="3" x2="12" y2="21" />
+                        </svg></div>
+                    <span class="quick-fact-val">120 m²</span>
+                    <span class="quick-fact-label">Kullanım Alanı</span>
+                </div>
+                <div class="quick-fact">
+                    <div class="quick-fact-icon"><svg viewBox="0 0 24 24">
+                            <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                            <polyline points="2 17 12 22 22 17" />
+                            <polyline points="2 12 12 17 22 12" />
+                        </svg></div>
+                    <span class="quick-fact-val">150 m²</span>
+                    <span class="quick-fact-label">Toplam Alan</span>
+                </div>
+            </div>
+
+            <!-- Tab Navigation -->
+            <nav class="tab-nav" id="tabNav">
+                <button class="tab-btn active" data-tab="details">Detaylı Bilgi</button>
+                <button class="tab-btn" data-tab="description">Açıklama</button>
+                <button class="tab-btn" data-tab="features">Özellikler</button>
+                <button class="tab-btn" data-tab="address">Adres</button>
+            </nav>
+
+            <!-- Section: Details -->
+            <div class="section-card" id="sec-details">
+                <h2 class="section-title">Detaylı Bilgi</h2>
+                <div class="section-divider"></div>
+                <div class="detail-grid">
+                    <div class="detail-grid-item"><span class="dg-label">Emlak Numarası</span><span
+                            class="dg-value">GRE373674</span></div>
+                    <div class="detail-grid-item"><span class="dg-label">Fiyat</span><span
+                            class="dg-value dg-highlight">13.000.000 ₺</span></div>
+                    <div class="detail-grid-item"><span class="dg-label">Kullanım Alanı</span><span class="dg-value">120
+                            m²</span></div>
+                    <div class="detail-grid-item"><span class="dg-label">Toplam Alan</span><span class="dg-value">150
+                            m²</span></div>
+                    <div class="detail-grid-item"><span class="dg-label">Yatak Odası</span><span
+                            class="dg-value">3</span></div>
+                    <div class="detail-grid-item"><span class="dg-label">Oda Sayısı</span><span
+                            class="dg-value">4</span></div>
+                    <div class="detail-grid-item"><span class="dg-label">Banyo</span><span class="dg-value">2</span>
+                    </div>
+                    <div class="detail-grid-item"><span class="dg-label">İlan Türü</span><span
+                            class="dg-value">Daire</span></div>
+                    <div class="detail-grid-item"><span class="dg-label">Durum</span><span
+                            class="dg-value">Satılık</span></div>
+                    <div class="detail-grid-item"><span class="dg-label">Kat</span><span class="dg-value">4-5
+                            (Dubleks)</span></div>
+                </div>
+            </div>
+
+            <!-- Section: Description -->
+            <div class="section-card" id="sec-description">
+                <h2 class="section-title">Açıklama</h2>
+                <div class="section-divider"></div>
+                <div class="description-text">
+                    <p><strong>Konfor, Ekonomi ve Hazır Bir Yaşam Sizi Bekliyor!</strong></p>
+                    <p>Merkezi bir konumda, sakin ve nezih bir aile apartmanında yer alan bu geniş çatı dubleks, hem
+                        yatırımlık hem de oturumluk düşünenler için kaçırılmayacak bir fırsat sunuyor.</p>
+                    <p>5 katlı binanın 4. ve 5. katında bulunan dairemiz, tam eşyalı olarak satılıktır; sadece
+                        valizinizi alıp taşınabilirsiniz.</p>
+
+                    <div class="desc-highlight">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                        </svg>
+                        İskanlı ve krediye uygundur.
+                    </div>
+
+                    <p><strong>Dairenin Özellikleri:</strong></p>
+                    <p><strong>Geniş Kullanım Alanı:</strong> 150 m² brüt, 120 m² net kullanım alanı ile ferah bir
+                        yaşam.</p>
+                    <p><strong>Tam Donanımlı:</strong> Beyaz eşyalar, mobilyalar ve klimalar fiyata dahildir.</p>
+                    <p><strong>Kış Bahçesi Keyfi:</strong> Terası cam ile kapatılmıştır (Cam Balkon), yaz-kış ekstra bir
+                        yaşam alanı sunar.</p>
+                    <p><strong>Isınma:</strong> Doğalgaz kombi sistemi aktiftir, kışın ısınma sorunu yaşanmaz.</p>
+                    <p><strong>Konfor:</strong> Binada asansör mevcuttur.</p>
+                    <p><strong>Otopark:</strong> Açık otopark alanı vardır.</p>
+                    <p><strong>Çift Banyo:</strong> Her iki katta da banyo bulunmaktadır (Toplam 2 banyo).</p>
+                </div>
+            </div>
+
+            <!-- Section: Features -->
+            <div class="section-card" id="sec-features">
+                <h2 class="section-title">Özellikler</h2>
+                <div class="section-divider"></div>
+
+                <div class="features-group">
+                    <h3 class="features-group-title">Genel Özellikler</h3>
+                    <div class="features-list">
+                        <div class="feature-item"><svg viewBox="0 0 24 24">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg> Açık Otopark</div>
+                        <div class="feature-item"><svg viewBox="0 0 24 24">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg> Asansör</div>
+                        <div class="feature-item"><svg viewBox="0 0 24 24">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg> Panjur / Güneşlik</div>
+                    </div>
+                </div>
+
+                <div class="features-group">
+                    <h3 class="features-group-title">Enerji Özellikleri</h3>
+                    <div class="features-list">
+                        <div class="feature-item"><svg viewBox="0 0 24 24">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg> Doğalgaz</div>
+                        <div class="feature-item"><svg viewBox="0 0 24 24">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg> Elektrik</div>
+                    </div>
+                </div>
+
+                <div class="features-group">
+                    <h3 class="features-group-title">İç Özellikler</h3>
+                    <div class="features-list">
+                        <div class="feature-item"><svg viewBox="0 0 24 24">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg> Açık Mutfak</div>
+                        <div class="feature-item"><svg viewBox="0 0 24 24">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg> Bulaşık Makinesi</div>
+                        <div class="feature-item"><svg viewBox="0 0 24 24">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg> Buzdolabı</div>
+                        <div class="feature-item"><svg viewBox="0 0 24 24">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg> Çamaşır Makinesi</div>
+                        <div class="feature-item"><svg viewBox="0 0 24 24">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg> Duşakabin</div>
+                        <div class="feature-item"><svg viewBox="0 0 24 24">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg> Ebeveyn Banyosu</div>
+                        <div class="feature-item"><svg viewBox="0 0 24 24">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg> Fırın</div>
+                        <div class="feature-item"><svg viewBox="0 0 24 24">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg> Giyinme Odası</div>
+                        <div class="feature-item"><svg viewBox="0 0 24 24">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg> Gömme Dolap</div>
+                        <div class="feature-item"><svg viewBox="0 0 24 24">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg> İnternet</div>
+                        <div class="feature-item"><svg viewBox="0 0 24 24">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg> Klima</div>
+                        <div class="feature-item"><svg viewBox="0 0 24 24">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg> Saten Alçı</div>
+                    </div>
+                </div>
+
+                <div class="features-group">
+                    <h3 class="features-group-title">Kullanım Amacı</h3>
+                    <div class="features-list">
+                        <div class="feature-item"><svg viewBox="0 0 24 24">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg> Genel</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section: Address -->
+            <div class="section-card" id="sec-address">
+                <h2 class="section-title">Adres</h2>
+                <div class="section-divider"></div>
+                <div class="address-grid">
+                    <div class="address-item"><span class="address-label">Ülke</span><span
+                            class="address-value">Türkiye</span></div>
+                    <div class="address-item"><span class="address-label">İl</span><span
+                            class="address-value">Antalya</span></div>
+                    <div class="address-item"><span class="address-label">İlçe</span><span
+                            class="address-value">Konyaaltı</span></div>
+                    <div class="address-item"><span class="address-label">Bölge</span><span
+                            class="address-value">Liman</span></div>
+                </div>
+                <div class="map-container">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12770.0!2d30.63!3d36.87!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14c39afa3eb5208f%3A0x7bfee712e6c786!2sLiman%2C%20Konyaalt%C4%B1%2FAntalya!5e0!3m2!1str!2str!4v1707000000000!5m2!1str!2str"
+                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- ─── SIDEBAR ─── -->
+        <aside class="detail-sidebar">
+
+            <!-- Agent Card -->
+            <div class="agent-card">
+                <div class="agent-card-header">
+                    <div class="agent-avatar">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop&q=80&crop=faces"
+                            alt="Anna Balanovych">
+                    </div>
+                    <div class="agent-name">Anna Balanovych</div>
+                    <div class="agent-role">Emlak Danışmanı</div>
+                </div>
+                <div class="agent-card-body">
+                    <input class="agent-input" type="email" placeholder="E-posta adresiniz">
+                    <input class="agent-input" type="tel" placeholder="Telefon numaranız">
+                    <textarea class="agent-input"
+                        placeholder="Merhaba, Liman'da Doğalgazlı Ve Tam Eşyalı Satılık 3+1 Fırsat Dubleks ilanıyla ilgileniyorum. Detaylı bilgi alabilir miyim?"></textarea>
+                    <div class="agent-select-wrap">
+                        <select class="agent-select">
+                            <option value="">Konu Seçin</option>
+                            <option>Fiyat Bilgisi</option>
+                            <option>Görüntüleme Randevusu</option>
+                            <option>Detaylı Bilgi</option>
+                            <option>Kredi Danışmanlığı</option>
+                        </select>
+                    </div>
+                    <p class="agent-terms">Bu formu göndererek <a href="demo-sayfa.html?sayfa=Kullanım%20Koşulları">Kullanım Koşulları</a>'nı kabul ediyorum.</p>
+                    <div class="agent-btn-row">
+                        <button class="agent-btn agent-btn--primary">Mesaj Gönder</button>
+                        <button class="agent-btn agent-btn--outline">Ara</button>
+                    </div>
+                    <a href="https://wa.me/905300215291" target="_blank" rel="noopener noreferrer" class="agent-btn--whatsapp">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                            <path
+                                d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z" />
+                        </svg>
+                        WhatsApp ile Ulaşın
+                    </a>
+                </div>
+                <div class="sidebar-date">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10" />
+                        <polyline points="12 6 12 12 16 14" />
+                    </svg>
+                    Güncellendi: Şubat 4, 2026 — 16:15
+                </div>
+            </div>
+
+        </aside>
+        </div><!-- /.detail-layout-top -->
+
+        <!-- ─── SIMILAR PROPERTIES ─── -->
+        <section class="similar-section">
+            <h2 class="similar-title">Benzer İlanlar</h2>
+            <p class="similar-subtitle">Bu ilana benzer gayrimenkulleri keşfedin</p>
+            <div class="similar-grid">
+                <article class="mini-card">
+                    <div class="mini-card-img">
+                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400&h=300&fit=crop&q=80"
+                            alt="Villa" loading="lazy">
+                        <span class="mini-card-badge">Satılık</span>
+                    </div>
+                    <div class="mini-card-body">
+                        <div class="mini-card-price">₺15.500.000</div>
+                        <h3 class="mini-card-title">Konyaaltı Hurma Mah. Denize Yakın 4+1</h3>
+                        <div class="mini-card-loc"><svg viewBox="0 0 24 24">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                <circle cx="12" cy="10" r="3" />
+                            </svg> Konyaaltı, Antalya</div>
+                        <div class="mini-card-features">
+                            <span class="mini-card-feat"><svg viewBox="0 0 24 24">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                                </svg> 4+1</span>
+                            <span class="mini-card-feat"><svg viewBox="0 0 24 24">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                                </svg> 180 m²</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="mini-card">
+                    <div class="mini-card-img">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=300&fit=crop&q=80"
+                            alt="Daire" loading="lazy">
+                        <span class="mini-card-badge">Satılık</span>
+                    </div>
+                    <div class="mini-card-body">
+                        <div class="mini-card-price">₺11.200.000</div>
+                        <h3 class="mini-card-title">Liman Mah. Eşyalı 3+1 Dubleks</h3>
+                        <div class="mini-card-loc"><svg viewBox="0 0 24 24">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                <circle cx="12" cy="10" r="3" />
+                            </svg> Konyaaltı, Antalya</div>
+                        <div class="mini-card-features">
+                            <span class="mini-card-feat"><svg viewBox="0 0 24 24">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                                </svg> 3+1</span>
+                            <span class="mini-card-feat"><svg viewBox="0 0 24 24">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                                </svg> 145 m²</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="mini-card">
+                    <div class="mini-card-img">
+                        <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=400&h=300&fit=crop&q=80"
+                            alt="Villa" loading="lazy">
+                        <span class="mini-card-badge">Satılık</span>
+                    </div>
+                    <div class="mini-card-body">
+                        <div class="mini-card-price">₺18.750.000</div>
+                        <h3 class="mini-card-title">Sarısu Mah. Havuzlu Müstakil Villa</h3>
+                        <div class="mini-card-loc"><svg viewBox="0 0 24 24">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                <circle cx="12" cy="10" r="3" />
+                            </svg> Konyaaltı, Antalya</div>
+                        <div class="mini-card-features">
+                            <span class="mini-card-feat"><svg viewBox="0 0 24 24">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                                </svg> 5+1</span>
+                            <span class="mini-card-feat"><svg viewBox="0 0 24 24">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                                </svg> 280 m²</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="mini-card">
+                    <div class="mini-card-img">
+                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&h=300&fit=crop&q=80"
+                            alt="Residence" loading="lazy">
+                        <span class="mini-card-badge">Satılık</span>
+                    </div>
+                    <div class="mini-card-body">
+                        <div class="mini-card-price">₺9.800.000</div>
+                        <h3 class="mini-card-title">Uncalı Mah. Residence 2+1 Daire</h3>
+                        <div class="mini-card-loc"><svg viewBox="0 0 24 24">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                <circle cx="12" cy="10" r="3" />
+                            </svg> Konyaaltı, Antalya</div>
+                        <div class="mini-card-features">
+                            <span class="mini-card-feat"><svg viewBox="0 0 24 24">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                                </svg> 2+1</span>
+                            <span class="mini-card-feat"><svg viewBox="0 0 24 24">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                                </svg> 110 m²</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+    </div>
+
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose"><svg viewBox="0 0 24 24">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+            </svg></button>
+        <img src="" alt="Büyük Fotoğraf" id="lightboxImg">
+    </div>
+
+
+    <!-- Mobile Sticky CTA Bar -->
+    <div class="mobile-cta-bar" id="mobileCta">
+        <div class="mobile-cta-inner">
+            <div class="mobile-cta-info">
+                <div class="mobile-cta-price">13.000.000 ₺</div>
+                <div class="mobile-cta-title">3+1 Fırsat Dubleks — Liman</div>
+            </div>
+            <div class="mobile-cta-btns">
+                <a href="tel:+902423243420" class="mobile-cta-call" aria-label="Ara">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                    </svg>
+                </a>
+                <a href="https://wa.me/905300215291" target="_blank" rel="noopener noreferrer" class="mobile-cta-wp" aria-label="WhatsApp">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                        <path
+                            d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+
+    <footer class="footer" id="siteFooter">
+        <!-- Video Background -->
+        <div class="footer-video-container">
+            <video class="footer-video" autoplay muted loop playsinline poster="assets/images/logo.png">
+                <source src="assets/video/footer_video.mp4" type="video/mp4">
+                <!-- Fallback for browsers that don't support video -->
+            </video>
+            <div class="footer-video-overlay"></div>
+        </div>
+
+        <div class="footer-glass-edge" aria-hidden="true"></div>
+        <div class="footer-ornament footer-ornament--tl" aria-hidden="true"></div>
+        <div class="footer-ornament footer-ornament--br" aria-hidden="true"></div>
+
+        <div class="footer-main">
+            <!-- COL 1 — Brand -->
+            <div class="footer-col footer-brand reveal">
+                <a href="index.html" class="footer-logo" aria-label="Alfa Gayrimenkul">
+                    <div class="footer-logo-mark">
+                        <img src="assets/images/logo.png" alt="Alfa Gayrimenkul">
+                        <div class="logo-shine"></div>
+                    </div>
+                </a>
+                <p class="footer-brand-desc">Hayallerinizdeki yuvayı profesyonel çözümlerle buluşturuyoruz. Türkiye'nin
+                    en prestijli lokasyonlarında, güvenilir emlak danışmanlığı.</p>
+                <div class="footer-social" aria-label="Sosyal medya">
+                    <a href="#" class="footer-social-link" aria-label="Instagram"><svg viewBox="0 0 24 24">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                            <circle cx="12" cy="12" r="5" />
+                            <circle cx="17.5" cy="6.5" r="1.2" />
+                        </svg></a>
+                    <a href="#" class="footer-social-link" aria-label="LinkedIn"><svg viewBox="0 0 24 24">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z" />
+                            <rect x="2" y="9" width="4" height="12" />
+                            <circle cx="4" cy="4" r="2" />
+                        </svg></a>
+                    <a href="#" class="footer-social-link" aria-label="X"><svg viewBox="0 0 24 24">
+                            <path
+                                d="M4 4l6.6 8.4L4 20h2l5.4-6.3L16 20h5l-7-8.9L20.4 4H18.5l-4.9 5.7L9 4H4zm3 1.5h2.2l7.8 13h-2.2L7 5.5z" />
+                        </svg></a>
+                    <a href="#" class="footer-social-link" aria-label="YouTube"><svg viewBox="0 0 24 24">
+                            <path
+                                d="M22.54 6.42a2.78 2.78 0 0 0-1.95-2C18.88 4 12 4 12 4s-6.88 0-8.59.42a2.78 2.78 0 0 0-1.95 2A29.94 29.94 0 0 0 1 12a29.94 29.94 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 2C5.12 20 12 20 12 20s6.88 0 8.59-.42a2.78 2.78 0 0 0 1.95-2A29.94 29.94 0 0 0 23 12a29.94 29.94 0 0 0-.46-5.58zM9.75 15.02V8.98L15.5 12l-5.75 3.02z" />
+                        </svg></a>
+                    <a href="#" class="footer-social-link" aria-label="Facebook"><svg viewBox="0 0 24 24">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                        </svg></a>
+                </div>
+            </div>
+
+            <!-- COL 2 — Quick Links -->
+            <div class="footer-col reveal">
+                <h3 class="footer-col-title">Hızlı Erişim</h3>
+                <nav aria-label="Kurumsal">
+                    <ul class="footer-links">
+                        <li><a href="hakkimizda.html">Hakkımızda</a></li>
+                        <li><a href="demo-sayfa.html?sayfa=Ekibimiz">Ekibimiz</a></li>
+                        <li><a href="kariyer.html">Kariyer</a></li>
+                        <li><a href="list-page-final.html">Tüm İlanlar</a></li>
+                        <li><a href="demo-sayfa.html?sayfa=Projeler">Projeler</a></li>
+                        <li><a href="blog-list.html">Blog & Haberler</a></li>
+                        <li><a href="demo-sayfa.html?sayfa=SSS">SSS</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- COL 3 — Services -->
+            <div class="footer-col reveal">
+                <h3 class="footer-col-title">Hizmetler</h3>
+                <nav aria-label="Hizmetler">
+                    <ul class="footer-links">
+                        <li><a href="list-page-final.html?tip=satilik">Satılık Konut</a></li>
+                        <li><a href="list-page-final.html?tip=kiralik">Kiralık Konut</a></li>
+                        <li><a href="demo-sayfa.html?sayfa=Ticari%20Gayrimenkul">Ticari Gayrimenkul</a></li>
+                        <li><a href="demo-sayfa.html?sayfa=Arsa%20%26%20Arazi">Arsa & Arazi</a></li>
+                        <li><a href="demo-sayfa.html?sayfa=Yatırım%20Danışmanlığı">Yatırım Danışmanlığı</a></li>
+                        <li><a href="demo-sayfa.html?sayfa=Değerleme%20Hizmetleri">Değerleme Hizmetleri</a></li>
+                        <li><a href="faaliyet-alanlarimiz.html">Proje Pazarlama</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- COL 4 — Contact & Newsletter -->
+            <div class="footer-col footer-contact reveal">
+                <h3 class="footer-col-title">İletişim</h3>
+                <address class="footer-address">
+                    <div class="footer-address-item">
+                        <svg class="footer-address-icon" viewBox="0 0 24 24">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                            <circle cx="12" cy="10" r="3" />
+                        </svg>
+                        <span class="footer-address-text">Levent Mah. Büyükdere Cad.<br>No: 185, Kat: 12<br>Şişli /
+                            İstanbul</span>
+                    </div>
+                    <div class="footer-address-item">
+                        <svg class="footer-address-icon" viewBox="0 0 24 24">
+                            <path
+                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.58 2.81.7A2 2 0 0 1 22 16.92z" />
+                        </svg>
+                        <span class="footer-address-text"><a href="tel:+902121234567">+90 (212) 123 45 67</a></span>
+                    </div>
+                    <div class="footer-address-item">
+                        <svg class="footer-address-icon" viewBox="0 0 24 24">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                            <polyline points="22,6 12,13 2,6" />
+                        </svg>
+                        <span class="footer-address-text"><a
+                                href="mailto:info@alfagayrimenkul.com">info@alfagayrimenkul.com</a></span>
+                    </div>
+                </address>
+                <label class="footer-newsletter-label" for="newsletterEmail">Bültene Abone Olun</label>
+                <form class="footer-newsletter-form" id="newsletterForm" autocomplete="off">
+                    <input class="footer-newsletter-input" type="email" id="newsletterEmail"
+                        placeholder="E-posta adresiniz" required aria-label="E-posta adresi">
+                    <button class="footer-newsletter-btn" type="submit" aria-label="Abone ol">
+                        <svg viewBox="0 0 24 24">
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                            <polyline points="12 5 19 12 12 19" />
+                        </svg>
+                    </button>
+                </form>
+                <div class="footer-newsletter-msg" id="newsletterMsg">✓ Başarıyla abone oldunuz!</div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-bottom-inner">
+                <p class="footer-bottom-copy">© 2026 <span>Alfa Gayrimenkul</span>. Tüm hakları saklıdır.</p>
+                <div class="footer-bottom-links">
+                    <a href="demo-sayfa.html?sayfa=Kullanım%20Koşulları">Kullanım Koşulları</a>
+                    <span class="footer-bottom-sep">•</span>
+                    <a href="demo-sayfa.html?sayfa=Gizlilik%20Politikası">Gizlilik Politikası</a>
+                    <span class="footer-bottom-sep">•</span>
+                    <a href="demo-sayfa.html?sayfa=Çerez%20Politikası">Çerez Politikası</a>
+                </div>
+                <p class="footer-bottom-sig">Powered by <a href="demo-sayfa.html">Next Medya</a></p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- BACK TO TOP -->
+    <button class="back-to-top" id="backToTop" aria-label="Sayfanın başına dön">
+        <svg class="back-to-top-ring" viewBox="0 0 54 54">
+            <circle cx="27" cy="27" r="26" />
+        </svg>
+        <svg viewBox="0 0 24 24">
+            <polyline points="18 15 12 9 6 15" />
+        </svg>
+    </button>
+
+    <!-- ═══════════════════════════════════════
+     JAVASCRIPT
+     ═══════════════════════════════════════ -->
+    <script src="assets/js/header.js"></script>
+    <script src="assets/js/footer.js"></script>
+    <script src="assets/js/detail.js"></script>
+</body>
+
+</html>

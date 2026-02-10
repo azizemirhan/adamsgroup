@@ -1,0 +1,1604 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Satılık Gayrimenkuller — Alfa Gayrimenkul</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════
+   DESIGN TOKENS
+   ═══════════════════════════════════════════════════ */
+:root {
+  /* Core */
+  --navy:         #002147;
+  --navy-deep:    #001530;
+  --navy-light:   #0a3060;
+  --gold:         #c5a059;
+  --gold-light:   #d4b76a;
+  --gold-pale:    #f0e4c8;
+  --gold-dim:     rgba(197, 160, 89, 0.08);
+
+  /* Clean White Palette */
+  --white:        #ffffff;
+  --bg:           #f7f6f3;
+  --bg-warm:      #faf9f6;
+  --bg-card:      #ffffff;
+  --surface:      #f2f0ec;
+  --border:       #e8e5df;
+  --border-light: #f0ede8;
+
+  /* Text */
+  --text-dark:    #1a1a1f;
+  --text-body:    #4a4a52;
+  --text-mid:     #7a7a84;
+  --text-light:   #a0a0a8;
+  --text-faint:   #c5c5cc;
+
+  /* Functional */
+  --success:      #2d8a56;
+  --whatsapp:     #25d366;
+  --badge-sale:   #002147;
+  --badge-rent:   #1a6847;
+
+  /* Spacing */
+  --page-pad:     clamp(16px, 4vw, 48px);
+  --card-radius:  8px;
+  --filter-radius: 6px;
+
+  /* Motion */
+  --ease:         cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-bounce:  cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out:     cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: var(--bg);
+  color: var(--text-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+a { text-decoration: none; color: inherit; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+ul { list-style: none; }
+img { display: block; max-width: 100%; }
+input, select { font-family: inherit; }
+
+
+/* ═══════════════════════════════════════════════════
+   PAGE HEADER — Breadcrumb + Title
+   ═══════════════════════════════════════════════════ */
+.page-header {
+  background: var(--white);
+  border-bottom: 1px solid var(--border-light);
+  padding: 0 var(--page-pad);
+}
+
+.page-header-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 28px 0 32px;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.breadcrumb a, .breadcrumb span {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: var(--text-light);
+  transition: color 250ms ease;
+}
+
+.breadcrumb a:hover { color: var(--gold); }
+
+.breadcrumb-sep {
+  font-size: 10px;
+  color: var(--text-faint);
+  user-select: none;
+}
+
+.breadcrumb-current {
+  color: var(--text-mid) !important;
+  font-weight: 600;
+}
+
+/* Title row */
+.page-title-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.page-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(26px, 3.5vw, 40px);
+  font-weight: 600;
+  color: var(--text-dark);
+  line-height: 1.2;
+  letter-spacing: -0.3px;
+}
+
+.page-title-gold {
+  color: var(--gold);
+  font-style: italic;
+}
+
+.page-count {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-mid);
+  white-space: nowrap;
+  padding-bottom: 4px;
+}
+
+.page-count strong {
+  color: var(--navy);
+  font-weight: 700;
+}
+
+
+/* ═══════════════════════════════════════════════════
+   ACTIVE FILTER TAGS
+   ═══════════════════════════════════════════════════ */
+.active-filters {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 16px 0 0;
+}
+
+.active-filter-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--navy);
+  background: rgba(0, 33, 71, 0.05);
+  border: 1px solid rgba(0, 33, 71, 0.1);
+  border-radius: 100px;
+  letter-spacing: 0.3px;
+  transition: all 250ms ease;
+}
+
+.active-filter-tag:hover {
+  background: rgba(0, 33, 71, 0.08);
+}
+
+.active-filter-tag svg {
+  width: 12px;
+  height: 12px;
+  stroke: var(--text-mid);
+  stroke-width: 2;
+  fill: none;
+  cursor: pointer;
+  transition: stroke 200ms ease;
+}
+
+.active-filter-tag svg:hover { stroke: #c0392b; }
+
+.active-filters-clear {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: color 200ms ease;
+  margin-left: 4px;
+}
+
+.active-filters-clear:hover { color: #b08940; }
+
+
+/* ═══════════════════════════════════════════════════
+   MAIN LAYOUT — Sidebar + Content
+   ═══════════════════════════════════════════════════ */
+.listing-layout {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 32px var(--page-pad) 60px;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 36px;
+  align-items: start;
+}
+
+
+/* ═══════════════════════════════════════════════════
+   SIDEBAR — Sticky Filter Panel
+   ═══════════════════════════════════════════════════ */
+.filter-panel {
+  position: sticky;
+  top: 24px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 28px 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.filter-panel-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.filter-panel-title h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-dark);
+}
+
+.filter-panel-title svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--gold);
+  stroke-width: 1.8;
+  fill: none;
+}
+
+/* Filter Group */
+.filter-group {
+  margin-bottom: 24px;
+}
+
+.filter-group:last-child { margin-bottom: 0; }
+
+.filter-label {
+  display: block;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-mid);
+  margin-bottom: 10px;
+}
+
+/* Filter Inputs */
+.filter-input,
+.filter-select {
+  width: 100%;
+  padding: 11px 14px;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-dark);
+  background: var(--bg-warm);
+  border: 1px solid var(--border);
+  border-radius: var(--filter-radius);
+  outline: none;
+  transition: border-color 300ms ease, box-shadow 300ms ease, background 300ms ease;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.filter-input::placeholder { color: var(--text-faint); font-weight: 300; }
+
+.filter-input:focus,
+.filter-select:focus {
+  border-color: var(--gold);
+  background: var(--white);
+  box-shadow: 0 0 0 3px var(--gold-dim);
+}
+
+/* Select wrapper */
+.filter-select-wrap {
+  position: relative;
+}
+
+.filter-select-wrap::after {
+  content: '';
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0; height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid var(--text-light);
+  pointer-events: none;
+}
+
+.filter-select { padding-right: 36px; cursor: pointer; }
+
+.filter-select option {
+  background: var(--white);
+  color: var(--text-dark);
+}
+
+/* Price Row */
+.filter-price-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.filter-price-row .filter-input {
+  text-align: center;
+  font-size: 12.5px;
+}
+
+/* Room Buttons */
+.filter-room-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+}
+
+.filter-room-btn {
+  padding: 9px 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-mid);
+  background: var(--bg-warm);
+  border: 1px solid var(--border);
+  border-radius: var(--filter-radius);
+  text-align: center;
+  transition: all 250ms ease;
+}
+
+.filter-room-btn:hover {
+  border-color: var(--gold);
+  color: var(--text-dark);
+}
+
+.filter-room-btn.selected {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: var(--white);
+}
+
+/* m² Slider Visual */
+.filter-range-display {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.filter-range-val {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.filter-range-slider {
+  width: 100%;
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+.filter-range-slider::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 3px solid var(--white);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: transform 200ms var(--ease-bounce);
+}
+
+.filter-range-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+.filter-range-slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 3px solid var(--white);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+/* Filter CTA */
+.filter-apply-btn {
+  width: 100%;
+  padding: 14px 0;
+  margin-top: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--white);
+  background: var(--navy);
+  border-radius: var(--filter-radius);
+  transition: background 300ms ease, box-shadow 300ms ease, transform 300ms var(--ease);
+}
+
+.filter-apply-btn:hover {
+  background: var(--navy-light);
+  box-shadow: 0 4px 16px rgba(0, 33, 71, 0.2);
+  transform: translateY(-1px);
+}
+
+.filter-reset-btn {
+  width: 100%;
+  padding: 10px 0;
+  margin-top: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--text-light);
+  text-align: center;
+  transition: color 200ms ease;
+}
+
+.filter-reset-btn:hover { color: var(--gold); }
+
+
+/* ═══════════════════════════════════════════════════
+   CONTENT AREA — Toolbar + Grid + Pagination
+   ═══════════════════════════════════════════════════ */
+.listing-content { min-width: 0; }
+
+/* Toolbar */
+.listing-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.listing-toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* View toggle */
+.view-toggle {
+  display: flex;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.view-toggle-btn {
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 200ms ease;
+}
+
+.view-toggle-btn svg {
+  width: 16px; height: 16px;
+  stroke: var(--text-light);
+  stroke-width: 1.8;
+  fill: none;
+  transition: stroke 200ms ease;
+}
+
+.view-toggle-btn.active {
+  background: var(--navy);
+}
+
+.view-toggle-btn.active svg { stroke: var(--white); }
+
+.view-toggle-btn:hover:not(.active) { background: var(--surface); }
+
+/* Sort */
+.sort-wrap {
+  position: relative;
+}
+
+.sort-select {
+  padding: 9px 36px 9px 14px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--text-body);
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  transition: border-color 250ms ease;
+}
+
+.sort-select:focus { border-color: var(--gold); }
+
+.sort-wrap::after {
+  content: '';
+  position: absolute;
+  right: 14px; top: 50%;
+  transform: translateY(-50%);
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid var(--text-light);
+  pointer-events: none;
+}
+
+/* Mobile filter trigger */
+.mobile-filter-btn {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--navy);
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  transition: all 250ms ease;
+}
+
+.mobile-filter-btn svg {
+  width: 16px; height: 16px;
+  stroke: var(--gold);
+  stroke-width: 2;
+  fill: none;
+}
+
+.mobile-filter-btn:hover { border-color: var(--gold); }
+
+
+/* ═══════════════════════════════════════════════════
+   PROPERTY GRID
+   ═══════════════════════════════════════════════════ */
+.property-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+
+/* ═══════════════════════════════════════════════════
+   PROPERTY CARD
+   ═══════════════════════════════════════════════════ */
+.property-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  transition:
+    box-shadow 400ms var(--ease),
+    transform 400ms var(--ease),
+    border-color 400ms ease;
+  /* Staggered entry */
+  opacity: 0;
+  transform: translateY(20px);
+  animation: cardReveal 0.6s var(--ease) forwards;
+}
+
+.property-card:nth-child(1)  { animation-delay: 0.05s; }
+.property-card:nth-child(2)  { animation-delay: 0.10s; }
+.property-card:nth-child(3)  { animation-delay: 0.15s; }
+.property-card:nth-child(4)  { animation-delay: 0.20s; }
+.property-card:nth-child(5)  { animation-delay: 0.25s; }
+.property-card:nth-child(6)  { animation-delay: 0.30s; }
+.property-card:nth-child(7)  { animation-delay: 0.35s; }
+.property-card:nth-child(8)  { animation-delay: 0.40s; }
+.property-card:nth-child(9)  { animation-delay: 0.45s; }
+
+@keyframes cardReveal {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.property-card:hover {
+  border-color: rgba(197, 160, 89, 0.3);
+  box-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.06),
+    0 1px 3px rgba(0, 0, 0, 0.04);
+  transform: translateY(-4px);
+}
+
+/* ── Image ── */
+.card-image {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 600ms var(--ease);
+}
+
+.property-card:hover .card-image img {
+  transform: scale(1.05);
+}
+
+/* Badge */
+.card-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 12px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--white);
+  border-radius: 3px;
+  z-index: 2;
+}
+
+.card-badge--sale { background: var(--badge-sale); }
+.card-badge--rent { background: var(--badge-rent); }
+.card-badge--new  { background: var(--gold); color: var(--navy-deep); }
+
+/* Favorite heart */
+.card-fav {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  z-index: 2;
+  transition: transform 250ms var(--ease-bounce), background 250ms ease;
+}
+
+.card-fav svg {
+  width: 16px; height: 16px;
+  stroke: var(--text-mid);
+  stroke-width: 2;
+  fill: none;
+  transition: all 250ms ease;
+}
+
+.card-fav:hover {
+  transform: scale(1.1);
+  background: var(--white);
+}
+
+.card-fav.liked svg {
+  fill: #e74c3c;
+  stroke: #e74c3c;
+}
+
+/* Photo counter */
+.card-photo-count {
+  position: absolute;
+  bottom: 12px;
+  left: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--white);
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(6px);
+  border-radius: 3px;
+  z-index: 2;
+}
+
+.card-photo-count svg {
+  width: 13px; height: 13px;
+  stroke: var(--white);
+  stroke-width: 2;
+  fill: none;
+}
+
+/* ── Card Body ── */
+.card-body {
+  padding: 20px 20px 16px;
+}
+
+/* Price */
+.card-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+
+.card-price-suffix {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-light);
+}
+
+/* Title & Location */
+.card-title {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 6px;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-location {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12.5px;
+  font-weight: 400;
+  color: var(--text-mid);
+  margin-bottom: 16px;
+}
+
+.card-location svg {
+  width: 13px; height: 13px;
+  stroke: var(--gold);
+  stroke-width: 1.8;
+  fill: none;
+  flex-shrink: 0;
+}
+
+/* Features row */
+.card-features {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 14px 0;
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.card-feature {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 0 8px;
+  border-right: 1px solid var(--border-light);
+}
+
+.card-feature:last-child { border-right: none; }
+
+.card-feature svg {
+  width: 16px; height: 16px;
+  stroke: var(--gold);
+  stroke-width: 1.6;
+  fill: none;
+  flex-shrink: 0;
+}
+
+.card-feature-text {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-dark);
+  white-space: nowrap;
+}
+
+.card-feature-label {
+  font-size: 9.5px;
+  font-weight: 500;
+  color: var(--text-light);
+  letter-spacing: 0.3px;
+}
+
+/* Actions */
+.card-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: 16px;
+}
+
+.card-detail-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 0;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--navy);
+  background: transparent;
+  border: 1.5px solid var(--navy);
+  border-radius: 4px;
+  transition: all 300ms var(--ease);
+}
+
+.card-detail-btn svg {
+  width: 14px; height: 14px;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+  transition: transform 300ms var(--ease);
+}
+
+.card-detail-btn:hover {
+  background: var(--navy);
+  color: var(--white);
+}
+
+.card-detail-btn:hover svg { transform: translateX(3px); }
+
+.card-whatsapp-btn {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--whatsapp);
+  border-radius: 4px;
+  flex-shrink: 0;
+  transition: transform 300ms var(--ease-bounce), box-shadow 300ms ease;
+}
+
+.card-whatsapp-btn svg {
+  width: 20px; height: 20px;
+  fill: var(--white);
+}
+
+.card-whatsapp-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35);
+}
+
+
+/* ═══════════════════════════════════════════════════
+   PAGINATION
+   ═══════════════════════════════════════════════════ */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border-light);
+}
+
+.pagination-btn {
+  min-width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-mid);
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  transition: all 250ms ease;
+}
+
+.pagination-btn:hover {
+  border-color: var(--gold);
+  color: var(--navy);
+}
+
+.pagination-btn.active {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: var(--white);
+}
+
+.pagination-btn.disabled {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.pagination-btn svg {
+  width: 16px; height: 16px;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+}
+
+.pagination-ellipsis {
+  font-size: 14px;
+  color: var(--text-faint);
+  padding: 0 4px;
+  user-select: none;
+}
+
+
+/* ═══════════════════════════════════════════════════
+   MOBILE BOTTOM SHEET FILTER
+   ═══════════════════════════════════════════════════ */
+.bottom-sheet-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 998;
+  opacity: 0;
+  transition: opacity 350ms ease;
+}
+
+.bottom-sheet-overlay.visible { opacity: 1; }
+
+.bottom-sheet {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  max-height: 85vh;
+  background: var(--white);
+  border-radius: 16px 16px 0 0;
+  overflow: hidden;
+  transform: translateY(100%);
+  transition: transform 450ms var(--ease);
+}
+
+.bottom-sheet.open { transform: translateY(0); }
+
+.bottom-sheet-handle {
+  display: flex;
+  justify-content: center;
+  padding: 12px 0 8px;
+}
+
+.bottom-sheet-handle::before {
+  content: '';
+  width: 40px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--border);
+}
+
+.bottom-sheet-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 24px 16px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.bottom-sheet-header h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.bottom-sheet-close {
+  width: 36px; height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 200ms ease;
+}
+
+.bottom-sheet-close:hover { background: var(--surface); }
+
+.bottom-sheet-close svg {
+  width: 18px; height: 18px;
+  stroke: var(--text-mid);
+  stroke-width: 2;
+  fill: none;
+}
+
+.bottom-sheet-body {
+  padding: 24px;
+  overflow-y: auto;
+  max-height: calc(85vh - 130px);
+}
+
+.bottom-sheet-body .filter-group { margin-bottom: 20px; }
+
+.bottom-sheet-footer {
+  display: flex;
+  gap: 12px;
+  padding: 16px 24px;
+  border-top: 1px solid var(--border-light);
+  background: var(--white);
+}
+
+.bottom-sheet-footer .filter-apply-btn { flex: 1; }
+.bottom-sheet-footer .filter-reset-btn {
+  flex: 0 0 auto;
+  padding: 14px 20px;
+  margin-top: 0;
+}
+
+
+/* ═══════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════ */
+@media (max-width: 1100px) {
+  .property-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .listing-layout {
+    grid-template-columns: 260px 1fr;
+    gap: 28px;
+  }
+}
+
+@media (max-width: 860px) {
+  .listing-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .filter-panel { display: none; }
+
+  .mobile-filter-btn { display: inline-flex; }
+
+  .bottom-sheet-overlay,
+  .bottom-sheet { display: block; }
+
+  .property-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .property-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .page-title-row { flex-direction: column; align-items: flex-start; gap: 8px; }
+
+  .card-price { font-size: 21px; }
+
+  .card-body { padding: 16px 16px 14px; }
+
+  .listing-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .listing-toolbar-left { justify-content: space-between; width: 100%; }
+
+  .pagination-btn { min-width: 38px; height: 38px; font-size: 12px; }
+}
+
+@media (max-width: 420px) {
+  .card-feature { padding: 0 4px; gap: 4px; }
+  .card-feature-text { font-size: 11.5px; }
+  .card-feature-label { font-size: 9px; }
+}
+</style>
+</head>
+<body>
+
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE HEADER
+     ═══════════════════════════════════════════════════ -->
+<section class="page-header">
+  <div class="page-header-inner">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="#">Anasayfa</a>
+      <span class="breadcrumb-sep">›</span>
+      <a href="#">Satılık</a>
+      <span class="breadcrumb-sep">›</span>
+      <span class="breadcrumb-current">İstanbul</span>
+    </nav>
+
+    <div class="page-title-row">
+      <h1 class="page-title">Satılık <span class="page-title-gold">Gayrimenkuller</span></h1>
+      <p class="page-count"><strong>126</strong> gayrimenkul bulundu</p>
+    </div>
+
+    <div class="active-filters" id="activeFilters">
+      <span class="active-filter-tag">İstanbul <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+      <span class="active-filter-tag">Konut <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+      <span class="active-filter-tag">3+1 ve üzeri <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+      <button class="active-filters-clear" type="button">Tümünü Temizle</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     MAIN LAYOUT
+     ═══════════════════════════════════════════════════ -->
+<div class="listing-layout">
+
+  <!-- ─── SIDEBAR FILTERS ─── -->
+  <aside class="filter-panel" id="filterPanel">
+    <div class="filter-panel-title">
+      <h3>Filtreler</h3>
+      <svg viewBox="0 0 24 24"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+    </div>
+
+    <!-- Location -->
+    <div class="filter-group">
+      <label class="filter-label">Konum</label>
+      <input class="filter-input" type="text" placeholder="Şehir veya ilçe yazın...">
+    </div>
+
+    <!-- Type -->
+    <div class="filter-group">
+      <label class="filter-label">Emlak Tipi</label>
+      <div class="filter-select-wrap">
+        <select class="filter-select">
+          <option value="">Tümü</option>
+          <option value="daire">Daire</option>
+          <option value="villa">Villa</option>
+          <option value="mustakil">Müstakil Ev</option>
+          <option value="rezidans">Rezidans</option>
+          <option value="arsa">Arsa</option>
+          <option value="ticari">Ticari</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Price -->
+    <div class="filter-group">
+      <label class="filter-label">Fiyat Aralığı</label>
+      <div class="filter-price-row">
+        <input class="filter-input" type="text" placeholder="Min ₺">
+        <input class="filter-input" type="text" placeholder="Max ₺">
+      </div>
+    </div>
+
+    <!-- Rooms -->
+    <div class="filter-group">
+      <label class="filter-label">Oda Sayısı</label>
+      <div class="filter-room-grid">
+        <button class="filter-room-btn" data-room="1+1">1+1</button>
+        <button class="filter-room-btn" data-room="2+1">2+1</button>
+        <button class="filter-room-btn selected" data-room="3+1">3+1</button>
+        <button class="filter-room-btn" data-room="4+1">4+1</button>
+        <button class="filter-room-btn" data-room="5+">5+</button>
+      </div>
+    </div>
+
+    <!-- m² -->
+    <div class="filter-group">
+      <label class="filter-label">Alan (m²)</label>
+      <div class="filter-range-display">
+        <span class="filter-range-val">50 m²</span>
+        <span class="filter-range-val" id="rangeMax">250 m²</span>
+      </div>
+      <input class="filter-range-slider" type="range" min="50" max="500" value="250" step="10" id="areaSlider">
+    </div>
+
+    <button class="filter-apply-btn" type="button">Filtrele</button>
+    <button class="filter-reset-btn" type="button">Filtreleri Sıfırla</button>
+  </aside>
+
+
+  <!-- ─── LISTING CONTENT ─── -->
+  <main class="listing-content">
+
+    <!-- Toolbar -->
+    <div class="listing-toolbar">
+      <div class="listing-toolbar-left">
+        <button class="mobile-filter-btn" id="mobileFilterBtn" type="button">
+          <svg viewBox="0 0 24 24"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+          Filtreler
+        </button>
+        <div class="view-toggle">
+          <button class="view-toggle-btn active" data-view="grid" aria-label="Grid görünüm">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+          </button>
+          <button class="view-toggle-btn" data-view="list" aria-label="Liste görünüm">
+            <svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><circle cx="4" cy="6" r="1.5"/><circle cx="4" cy="12" r="1.5"/><circle cx="4" cy="18" r="1.5"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="sort-wrap">
+        <select class="sort-select">
+          <option>Önerilen Sıralama</option>
+          <option>Fiyat: Düşükten Yükseğe</option>
+          <option>Fiyat: Yüksekten Düşüğe</option>
+          <option>En Yeni İlanlar</option>
+          <option>En Büyük Alan (m²)</option>
+        </select>
+      </div>
+    </div>
+
+
+    <!-- Property Grid -->
+    <div class="property-grid" id="propertyGrid">
+
+      <!-- CARD 1 -->
+      <article class="property-card">
+        <div class="card-image">
+          <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&h=450&fit=crop&q=80" alt="Boğaz Manzaralı Villa" loading="lazy">
+          <span class="card-badge card-badge--sale">Satılık</span>
+          <button class="card-fav" aria-label="Favorilere ekle"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+          <span class="card-photo-count"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg> 12</span>
+        </div>
+        <div class="card-body">
+          <div class="card-price">₺42.500.000</div>
+          <h3 class="card-title">Boğaz Manzaralı Modern Triplex Villa</h3>
+          <div class="card-location"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Sarıyer, İstanbul</div>
+          <div class="card-features">
+            <div class="card-feature"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><div><span class="card-feature-text">5+2</span></div></div>
+            <div class="card-feature"><svg viewBox="0 0 24 24"><path d="M4 12h16a1 1 0 0 1 1 1v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-3a1 1 0 0 1 1-1z"/><path d="M3.5 12V7a4.5 4.5 0 0 1 9 0v5"/><line x1="18" y1="7" x2="18" y2="12"/></svg><div><span class="card-feature-text">3</span></div></div>
+            <div class="card-feature"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="12" y1="3" x2="12" y2="21"/></svg><div><span class="card-feature-text">420 m²</span></div></div>
+          </div>
+          <div class="card-actions">
+            <a href="detail-page.html" class="card-detail-btn"><span>Detaylı Bilgi</span><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></a>
+            <a href="#" class="card-whatsapp-btn" aria-label="WhatsApp ile iletişim"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- CARD 2 -->
+      <article class="property-card">
+        <div class="card-image">
+          <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&h=450&fit=crop&q=80" alt="Kadıköy Lüks Daire" loading="lazy">
+          <span class="card-badge card-badge--sale">Satılık</span>
+          <button class="card-fav liked" aria-label="Favorilerden çıkar"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+          <span class="card-photo-count"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg> 8</span>
+        </div>
+        <div class="card-body">
+          <div class="card-price">₺8.750.000</div>
+          <h3 class="card-title">Kadıköy Moda Deniz Manzaralı 3+1 Daire</h3>
+          <div class="card-location"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Kadıköy, İstanbul</div>
+          <div class="card-features">
+            <div class="card-feature"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><div><span class="card-feature-text">3+1</span></div></div>
+            <div class="card-feature"><svg viewBox="0 0 24 24"><path d="M4 12h16a1 1 0 0 1 1 1v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-3a1 1 0 0 1 1-1z"/><path d="M3.5 12V7a4.5 4.5 0 0 1 9 0v5"/><line x1="18" y1="7" x2="18" y2="12"/></svg><div><span class="card-feature-text">2</span></div></div>
+            <div class="card-feature"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="12" y1="3" x2="12" y2="21"/></svg><div><span class="card-feature-text">185 m²</span></div></div>
+          </div>
+          <div class="card-actions">
+            <a href="detail-page.html" class="card-detail-btn"><span>Detaylı Bilgi</span><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></a>
+            <a href="#" class="card-whatsapp-btn" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- CARD 3 -->
+      <article class="property-card">
+        <div class="card-image">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=450&fit=crop&q=80" alt="Beşiktaş Residence" loading="lazy">
+          <span class="card-badge card-badge--new">Yeni</span>
+          <button class="card-fav" aria-label="Favorilere ekle"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+          <span class="card-photo-count"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg> 15</span>
+        </div>
+        <div class="card-body">
+          <div class="card-price">₺12.900.000</div>
+          <h3 class="card-title">Beşiktaş Etiler Residence 4+1 Daire</h3>
+          <div class="card-location"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Beşiktaş, İstanbul</div>
+          <div class="card-features">
+            <div class="card-feature"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><div><span class="card-feature-text">4+1</span></div></div>
+            <div class="card-feature"><svg viewBox="0 0 24 24"><path d="M4 12h16a1 1 0 0 1 1 1v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-3a1 1 0 0 1 1-1z"/><path d="M3.5 12V7a4.5 4.5 0 0 1 9 0v5"/><line x1="18" y1="7" x2="18" y2="12"/></svg><div><span class="card-feature-text">2</span></div></div>
+            <div class="card-feature"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="12" y1="3" x2="12" y2="21"/></svg><div><span class="card-feature-text">240 m²</span></div></div>
+          </div>
+          <div class="card-actions">
+            <a href="detail-page.html" class="card-detail-btn"><span>Detaylı Bilgi</span><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></a>
+            <a href="#" class="card-whatsapp-btn" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- CARD 4 -->
+      <article class="property-card">
+        <div class="card-image">
+          <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&h=450&fit=crop&q=80" alt="Zekeriyaköy Villa" loading="lazy">
+          <span class="card-badge card-badge--sale">Satılık</span>
+          <button class="card-fav" aria-label="Favorilere ekle"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+          <span class="card-photo-count"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg> 20</span>
+        </div>
+        <div class="card-body">
+          <div class="card-price">₺28.000.000</div>
+          <h3 class="card-title">Zekeriyaköy Havuzlu Müstakil Villa</h3>
+          <div class="card-location"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Sarıyer, İstanbul</div>
+          <div class="card-features">
+            <div class="card-feature"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><div><span class="card-feature-text">6+2</span></div></div>
+            <div class="card-feature"><svg viewBox="0 0 24 24"><path d="M4 12h16a1 1 0 0 1 1 1v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-3a1 1 0 0 1 1-1z"/><path d="M3.5 12V7a4.5 4.5 0 0 1 9 0v5"/><line x1="18" y1="7" x2="18" y2="12"/></svg><div><span class="card-feature-text">4</span></div></div>
+            <div class="card-feature"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="12" y1="3" x2="12" y2="21"/></svg><div><span class="card-feature-text">520 m²</span></div></div>
+          </div>
+          <div class="card-actions">
+            <a href="detail-page.html" class="card-detail-btn"><span>Detaylı Bilgi</span><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></a>
+            <a href="#" class="card-whatsapp-btn" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- CARD 5 -->
+      <article class="property-card">
+        <div class="card-image">
+          <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?w=600&h=450&fit=crop&q=80" alt="Nişantaşı Daire" loading="lazy">
+          <span class="card-badge card-badge--rent">Kiralık</span>
+          <button class="card-fav" aria-label="Favorilere ekle"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+          <span class="card-photo-count"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg> 6</span>
+        </div>
+        <div class="card-body">
+          <div class="card-price">₺55.000 <span class="card-price-suffix">/ ay</span></div>
+          <h3 class="card-title">Nişantaşı Abdi İpekçi Caddesi 2+1</h3>
+          <div class="card-location"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Şişli, İstanbul</div>
+          <div class="card-features">
+            <div class="card-feature"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><div><span class="card-feature-text">2+1</span></div></div>
+            <div class="card-feature"><svg viewBox="0 0 24 24"><path d="M4 12h16a1 1 0 0 1 1 1v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-3a1 1 0 0 1 1-1z"/><path d="M3.5 12V7a4.5 4.5 0 0 1 9 0v5"/><line x1="18" y1="7" x2="18" y2="12"/></svg><div><span class="card-feature-text">1</span></div></div>
+            <div class="card-feature"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="12" y1="3" x2="12" y2="21"/></svg><div><span class="card-feature-text">120 m²</span></div></div>
+          </div>
+          <div class="card-actions">
+            <a href="detail-page.html" class="card-detail-btn"><span>Detaylı Bilgi</span><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></a>
+            <a href="#" class="card-whatsapp-btn" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- CARD 6 -->
+      <article class="property-card">
+        <div class="card-image">
+          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&h=450&fit=crop&q=80" alt="Ataşehir Residence" loading="lazy">
+          <span class="card-badge card-badge--sale">Satılık</span>
+          <button class="card-fav" aria-label="Favorilere ekle"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+          <span class="card-photo-count"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg> 10</span>
+        </div>
+        <div class="card-body">
+          <div class="card-price">₺6.250.000</div>
+          <h3 class="card-title">Ataşehir Finans Merkezi Yanı 3+1</h3>
+          <div class="card-location"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Ataşehir, İstanbul</div>
+          <div class="card-features">
+            <div class="card-feature"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><div><span class="card-feature-text">3+1</span></div></div>
+            <div class="card-feature"><svg viewBox="0 0 24 24"><path d="M4 12h16a1 1 0 0 1 1 1v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-3a1 1 0 0 1 1-1z"/><path d="M3.5 12V7a4.5 4.5 0 0 1 9 0v5"/><line x1="18" y1="7" x2="18" y2="12"/></svg><div><span class="card-feature-text">2</span></div></div>
+            <div class="card-feature"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="12" y1="3" x2="12" y2="21"/></svg><div><span class="card-feature-text">165 m²</span></div></div>
+          </div>
+          <div class="card-actions">
+            <a href="detail-page.html" class="card-detail-btn"><span>Detaylı Bilgi</span><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></a>
+            <a href="#" class="card-whatsapp-btn" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg></a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Pagination -->
+    <nav class="pagination" aria-label="Sayfa navigasyonu">
+      <button class="pagination-btn disabled" aria-label="Önceki sayfa"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+      <button class="pagination-btn active">1</button>
+      <button class="pagination-btn">2</button>
+      <button class="pagination-btn">3</button>
+      <span class="pagination-ellipsis">…</span>
+      <button class="pagination-btn">14</button>
+      <button class="pagination-btn" aria-label="Sonraki sayfa"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+    </nav>
+
+  </main>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     MOBILE BOTTOM SHEET FILTER
+     ═══════════════════════════════════════════════════ -->
+<div class="bottom-sheet-overlay" id="bsOverlay"></div>
+<div class="bottom-sheet" id="bottomSheet">
+  <div class="bottom-sheet-handle"></div>
+  <div class="bottom-sheet-header">
+    <h3>Filtreleri Düzenle</h3>
+    <button class="bottom-sheet-close" id="bsClose" aria-label="Kapat"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  </div>
+  <div class="bottom-sheet-body">
+    <div class="filter-group">
+      <label class="filter-label">Konum</label>
+      <input class="filter-input" type="text" placeholder="Şehir veya ilçe yazın...">
+    </div>
+    <div class="filter-group">
+      <label class="filter-label">Emlak Tipi</label>
+      <div class="filter-select-wrap">
+        <select class="filter-select">
+          <option value="">Tümü</option>
+          <option value="daire">Daire</option>
+          <option value="villa">Villa</option>
+          <option value="mustakil">Müstakil Ev</option>
+          <option value="arsa">Arsa</option>
+          <option value="ticari">Ticari</option>
+        </select>
+      </div>
+    </div>
+    <div class="filter-group">
+      <label class="filter-label">Fiyat Aralığı</label>
+      <div class="filter-price-row">
+        <input class="filter-input" type="text" placeholder="Min ₺">
+        <input class="filter-input" type="text" placeholder="Max ₺">
+      </div>
+    </div>
+    <div class="filter-group">
+      <label class="filter-label">Oda Sayısı</label>
+      <div class="filter-room-grid">
+        <button class="filter-room-btn" type="button">1+1</button>
+        <button class="filter-room-btn" type="button">2+1</button>
+        <button class="filter-room-btn selected" type="button">3+1</button>
+        <button class="filter-room-btn" type="button">4+1</button>
+        <button class="filter-room-btn" type="button">5+</button>
+      </div>
+    </div>
+    <div class="filter-group">
+      <label class="filter-label">Alan (m²)</label>
+      <div class="filter-range-display">
+        <span class="filter-range-val">50 m²</span>
+        <span class="filter-range-val">250 m²</span>
+      </div>
+      <input class="filter-range-slider" type="range" min="50" max="500" value="250" step="10">
+    </div>
+  </div>
+  <div class="bottom-sheet-footer">
+    <button class="filter-reset-btn" type="button">Sıfırla</button>
+    <button class="filter-apply-btn" type="button" id="bsApply">126 İlan Göster</button>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     JAVASCRIPT
+     ═══════════════════════════════════════════════════ -->
+<script>
+(function () {
+  'use strict';
+
+  /* ── Room Filter Toggle ── */
+  document.querySelectorAll('.filter-room-grid').forEach(function (grid) {
+    grid.querySelectorAll('.filter-room-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        grid.querySelectorAll('.filter-room-btn').forEach(function (b) {
+          b.classList.remove('selected');
+        });
+        btn.classList.add('selected');
+      });
+    });
+  });
+
+  /* ── Range Slider ── */
+  var areaSlider = document.getElementById('areaSlider');
+  var rangeMax = document.getElementById('rangeMax');
+  if (areaSlider && rangeMax) {
+    areaSlider.addEventListener('input', function () {
+      rangeMax.textContent = areaSlider.value + ' m²';
+    });
+  }
+
+  /* ── Favorite Toggle ── */
+  document.querySelectorAll('.card-fav').forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      btn.classList.toggle('liked');
+    });
+  });
+
+  /* ── View Toggle ── */
+  document.querySelectorAll('.view-toggle-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.view-toggle-btn').forEach(function (b) {
+        b.classList.remove('active');
+      });
+      btn.classList.add('active');
+    });
+  });
+
+  /* ── Pagination ── */
+  document.querySelectorAll('.pagination-btn:not(.disabled)').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.pagination-btn').forEach(function (b) {
+        b.classList.remove('active');
+      });
+      btn.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+
+  /* ── Active Filter Tag Remove ── */
+  document.querySelectorAll('.active-filter-tag svg').forEach(function (x) {
+    x.addEventListener('click', function () {
+      var tag = x.closest('.active-filter-tag');
+      tag.style.opacity = '0';
+      tag.style.transform = 'scale(0.9)';
+      tag.style.transition = 'all 250ms ease';
+      setTimeout(function () { tag.remove(); }, 260);
+    });
+  });
+
+  document.querySelector('.active-filters-clear').addEventListener('click', function () {
+    document.querySelectorAll('.active-filter-tag').forEach(function (tag, i) {
+      setTimeout(function () {
+        tag.style.opacity = '0';
+        tag.style.transform = 'scale(0.9)';
+        tag.style.transition = 'all 200ms ease';
+        setTimeout(function () { tag.remove(); }, 220);
+      }, i * 80);
+    });
+  });
+
+  /* ── Mobile Bottom Sheet ── */
+  var bsOverlay = document.getElementById('bsOverlay');
+  var bottomSheet = document.getElementById('bottomSheet');
+  var mobileFilterBtn = document.getElementById('mobileFilterBtn');
+  var bsClose = document.getElementById('bsClose');
+  var bsApply = document.getElementById('bsApply');
+
+  function openBottomSheet() {
+    bsOverlay.classList.add('visible');
+    bottomSheet.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeBottomSheet() {
+    bottomSheet.classList.remove('open');
+    bsOverlay.classList.remove('visible');
+    document.body.style.overflow = '';
+  }
+
+  if (mobileFilterBtn) mobileFilterBtn.addEventListener('click', openBottomSheet);
+  if (bsClose) bsClose.addEventListener('click', closeBottomSheet);
+  if (bsOverlay) bsOverlay.addEventListener('click', closeBottomSheet);
+  if (bsApply) bsApply.addEventListener('click', closeBottomSheet);
+
+  /* ── Touch drag to close bottom sheet ── */
+  var startY = 0;
+  var currentY = 0;
+
+  bottomSheet.addEventListener('touchstart', function (e) {
+    startY = e.touches[0].clientY;
+  }, { passive: true });
+
+  bottomSheet.addEventListener('touchmove', function (e) {
+    currentY = e.touches[0].clientY;
+    var diff = currentY - startY;
+    if (diff > 0) {
+      bottomSheet.style.transform = 'translateY(' + diff + 'px)';
+    }
+  }, { passive: true });
+
+  bottomSheet.addEventListener('touchend', function () {
+    var diff = currentY - startY;
+    if (diff > 120) {
+      closeBottomSheet();
+    }
+    bottomSheet.style.transform = '';
+    startY = 0;
+    currentY = 0;
+  });
+
+})();
+</script>
+
+</body>
+</html>

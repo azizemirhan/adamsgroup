@@ -1,0 +1,470 @@
+/**
+ * ═══════════════════════════════════════════════════════════════════════════════
+ * İLKE VE DEĞERLERİMİZ SAYFASI STİLLERİ
+ * ilke-ve-degerlerimiz.html için özel stiller
+ * ═══════════════════════════════════════════════════════════════════════════════
+ */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   1. PAGE HEADER
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.principles-page-header {
+    position: relative;
+    min-height: 340px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 200px 24px 70px; /* Üst boşluk: header (110px) + ekstra alan */
+    overflow: hidden;
+}
+
+.principles-page-header-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 50%, #001a35 100%);
+    z-index: 1;
+}
+
+.principles-page-header-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+        radial-gradient(ellipse 80% 50% at 20% 40%, rgba(197, 160, 89, 0.12) 0%, transparent 50%),
+        radial-gradient(ellipse 60% 40% at 80% 60%, rgba(197, 160, 89, 0.06) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.principles-page-header-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.5;
+}
+
+.principles-page-header-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+}
+
+.principles-page-header-subtitle {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 16px;
+}
+
+.principles-page-header-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    color: white;
+    line-height: 1.2;
+    margin-bottom: 24px;
+}
+
+.principles-breadcrumb {
+    margin-top: 24px;
+}
+
+.principles-breadcrumb-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.principles-breadcrumb-list a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.principles-breadcrumb-list a:hover {
+    color: var(--gold);
+}
+
+.principles-breadcrumb-list li[aria-current="page"] {
+    color: var(--gold);
+    font-weight: 500;
+}
+
+.principles-breadcrumb-sep {
+    color: rgba(255,255,255,0.4);
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   2. INTRO SECTION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.principles-intro {
+    padding: 100px 24px;
+    background: var(--navy-deep);
+}
+
+.principles-intro-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.principles-intro h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 600;
+    color: white;
+    margin-bottom: 28px;
+    line-height: 1.4;
+}
+
+.principles-intro p {
+    font-size: 1.1rem;
+    line-height: 1.9;
+    color: var(--text-secondary);
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   3. VALUES GRID (Detaylı Değer Kartları)
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.principles-values {
+    padding: 100px 24px;
+    background: var(--navy);
+}
+
+.principles-values-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.principles-values-header {
+    text-align: center;
+    margin-bottom: 64px;
+}
+
+.principles-values-subtitle {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--gold);
+    margin-bottom: 12px;
+}
+
+.principles-values-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    font-weight: 600;
+    color: white;
+}
+
+.principles-values-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+}
+
+@media (max-width: 768px) {
+    .principles-values-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.principles-value-card {
+    display: flex;
+    gap: 28px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(197, 160, 89, 0.15);
+    border-radius: 20px;
+    padding: 40px 36px;
+    transition: all 0.4s var(--ease-out);
+}
+
+.principles-value-card:hover {
+    background: rgba(255,255,255,0.06);
+    border-color: rgba(197, 160, 89, 0.35);
+    transform: translateY(-4px);
+}
+
+.principles-value-icon {
+    flex-shrink: 0;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gold-dim);
+    border-radius: 16px;
+}
+
+.principles-value-icon svg {
+    width: 32px;
+    height: 32px;
+    stroke: var(--gold);
+    stroke-width: 1.5;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.principles-value-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 12px;
+}
+
+.principles-value-content p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   4. PRINCIPLES LIST (İlkelerimiz - Numaralı Liste)
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.principles-list-section {
+    padding: 100px 24px;
+    background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy-darker) 100%);
+}
+
+.principles-list-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.principles-list-header {
+    text-align: center;
+    margin-bottom: 56px;
+}
+
+.principles-list-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 600;
+    color: white;
+}
+
+.principles-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.principles-list-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 28px 32px;
+    background: rgba(255,255,255,0.03);
+    border-left: 4px solid var(--gold);
+    border-radius: 0 12px 12px 0;
+    transition: all 0.3s ease;
+}
+
+.principles-list-item:hover {
+    background: rgba(255,255,255,0.06);
+    padding-left: 36px;
+}
+
+.principles-list-number {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--gold);
+    background: rgba(197, 160, 89, 0.15);
+    border-radius: 12px;
+}
+
+.principles-list-text h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 8px;
+}
+
+.principles-list-text p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   5. COMMITMENT / TAHAHHÜT BÖLÜMÜ
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.principles-commitment {
+    padding: 100px 24px;
+    background: var(--navy);
+}
+
+.principles-commitment-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 60px 48px;
+    background: linear-gradient(135deg, rgba(197, 160, 89, 0.08) 0%, rgba(197, 160, 89, 0.02) 100%);
+    border: 1px solid rgba(197, 160, 89, 0.25);
+    border-radius: 24px;
+}
+
+.principles-commitment h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-weight: 600;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.principles-commitment p {
+    font-size: 1.1rem;
+    line-height: 1.9;
+    color: var(--text-secondary);
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   6. CTA SECTION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.principles-cta {
+    padding: 100px 24px;
+    background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 100%);
+}
+
+.principles-cta-inner {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.principles-cta h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    font-weight: 600;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.principles-cta p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin-bottom: 40px;
+}
+
+.principles-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 32px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    background: var(--gold);
+    color: var(--navy-deep);
+    border: 2px solid var(--gold);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.principles-cta-btn:hover {
+    background: var(--gold-light);
+    border-color: var(--gold-light);
+    transform: translateY(-2px);
+}
+
+.principles-cta-btn svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+    stroke-width: 2;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   7. RESPONSIVE
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+    .principles-page-header {
+        min-height: 300px;
+        padding: 160px 20px 50px;
+    }
+
+    .principles-intro {
+        padding: 60px 20px;
+    }
+
+    .principles-values {
+        padding: 60px 20px;
+    }
+
+    .principles-values-header {
+        margin-bottom: 48px;
+    }
+
+    .principles-value-card {
+        flex-direction: column;
+        padding: 32px 24px;
+    }
+
+    .principles-list-section {
+        padding: 60px 20px;
+    }
+
+    .principles-list-item {
+        flex-direction: column;
+        gap: 16px;
+        padding: 24px;
+    }
+
+    .principles-commitment {
+        padding: 60px 20px;
+    }
+
+    .principles-commitment-inner {
+        padding: 40px 24px;
+    }
+
+    .principles-cta {
+        padding: 60px 20px;
+    }
+}

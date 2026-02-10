@@ -1,0 +1,504 @@
+/**
+ * ═══════════════════════════════════════════════════════════════════════════════
+ * İLETİŞİM SAYFASI STİLLERİ
+ * iletisim.html için özel stiller
+ * ═══════════════════════════════════════════════════════════════════════════════
+ */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   1. PAGE HEADER
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.contact-page-header {
+    position: relative;
+    min-height: 340px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 200px 24px 70px;
+    overflow: hidden;
+}
+
+.contact-page-header-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 50%, #001a35 100%);
+    z-index: 1;
+}
+
+.contact-page-header-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+        radial-gradient(ellipse 80% 50% at 20% 40%, rgba(197, 160, 89, 0.12) 0%, transparent 50%),
+        radial-gradient(ellipse 60% 40% at 80% 60%, rgba(197, 160, 89, 0.06) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.contact-page-header-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.5;
+}
+
+.contact-page-header-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+}
+
+.contact-page-header-subtitle {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 16px;
+}
+
+.contact-page-header-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    color: white;
+    line-height: 1.2;
+    margin-bottom: 24px;
+}
+
+.contact-breadcrumb-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.contact-breadcrumb-list a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-breadcrumb-list a:hover {
+    color: var(--gold);
+}
+
+.contact-breadcrumb-list li[aria-current="page"] {
+    color: var(--gold);
+    font-weight: 500;
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   2. CONTACT CARDS (Hızlı İletişim)
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.contact-cards {
+    padding: 80px 24px;
+    margin-top: -40px;
+    position: relative;
+    z-index: 3;
+}
+
+.contact-cards-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+@media (max-width: 1024px) {
+    .contact-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 520px) {
+    .contact-cards-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.contact-card {
+    background: rgba(0, 33, 71, 0.95);
+    border: 1px solid rgba(197, 160, 89, 0.25);
+    border-radius: 20px;
+    padding: 36px 28px;
+    text-align: center;
+    transition: all 0.4s var(--ease-out);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+}
+
+.contact-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--gold);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+}
+
+.contact-card-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gold-dim);
+    border-radius: 16px;
+}
+
+.contact-card-icon svg {
+    width: 28px;
+    height: 28px;
+    stroke: var(--gold);
+    stroke-width: 1.5;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.contact-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 12px;
+}
+
+.contact-card p,
+.contact-card a {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    line-height: 1.6;
+}
+
+.contact-card a:hover {
+    color: var(--gold);
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   3. MAIN CONTENT (Form + Map)
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.contact-main {
+    padding: 80px 24px 100px;
+    background: var(--navy-deep);
+}
+
+.contact-main-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+}
+
+@media (max-width: 968px) {
+    .contact-main-inner {
+        grid-template-columns: 1fr;
+    }
+}
+
+.contact-form-wrap {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(197, 160, 89, 0.2);
+    border-radius: 24px;
+    padding: 48px 44px;
+}
+
+.contact-form-wrap h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 12px;
+}
+
+.contact-form-wrap > p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 32px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-form input,
+.contact-form textarea,
+.contact-form select {
+    width: 100%;
+    padding: 16px 20px;
+    font-size: 1rem;
+    font-family: inherit;
+    color: white;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 12px;
+    transition: border-color 0.3s ease;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: rgba(255,255,255,0.4);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus,
+.contact-form select:focus {
+    outline: none;
+    border-color: var(--gold);
+}
+
+.contact-form textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+.contact-form select {
+    cursor: pointer;
+}
+
+.contact-form select option {
+    background: var(--navy-deep);
+    color: white;
+}
+
+.contact-form-btn {
+    padding: 18px 32px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--navy-deep);
+    background: var(--gold);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.contact-form-btn:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+}
+
+.contact-map-wrap {
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.4);
+    border: 1px solid rgba(197, 160, 89, 0.15);
+}
+
+.contact-map-wrap iframe {
+    width: 100%;
+    height: 450px;
+    border: none;
+    display: block;
+}
+
+.contact-map-placeholder {
+    width: 100%;
+    height: 450px;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+}
+
+.contact-map-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   4. OFFICES / ŞUBELER
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.contact-offices {
+    padding: 100px 24px;
+    background: var(--navy);
+}
+
+.contact-offices-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.contact-offices-header {
+    text-align: center;
+    margin-bottom: 56px;
+}
+
+.contact-offices-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    font-weight: 600;
+    color: white;
+}
+
+.contact-offices-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+@media (max-width: 768px) {
+    .contact-offices-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.contact-office-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(197, 160, 89, 0.15);
+    border-radius: 20px;
+    padding: 40px 36px;
+    transition: all 0.4s var(--ease-out);
+}
+
+.contact-office-card:hover {
+    background: rgba(255,255,255,0.06);
+    border-color: rgba(197, 160, 89, 0.35);
+}
+
+.contact-office-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--gold);
+    margin-bottom: 20px;
+}
+
+.contact-office-card p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 8px;
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   5. CTA BANNER
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.contact-cta {
+    padding: 100px 24px;
+    background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 100%);
+}
+
+.contact-cta-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.contact-cta h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    font-weight: 600;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.contact-cta p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 36px;
+}
+
+.contact-cta-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.contact-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 32px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.contact-cta-btn--primary {
+    background: var(--gold);
+    color: var(--navy-deep);
+}
+
+.contact-cta-btn--primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+}
+
+.contact-cta-btn--secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid rgba(255,255,255,0.4);
+}
+
+.contact-cta-btn--secondary:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+}
+
+.contact-cta-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   6. RESPONSIVE
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+    .contact-page-header {
+        padding: 160px 20px 50px;
+    }
+
+    .contact-cards {
+        margin-top: -30px;
+        padding: 40px 20px;
+    }
+
+    .contact-main {
+        padding: 40px 20px 60px;
+    }
+
+    .contact-form-wrap {
+        padding: 32px 24px;
+    }
+
+    .contact-offices {
+        padding: 60px 20px;
+    }
+
+    .contact-cta {
+        padding: 60px 20px;
+    }
+}
