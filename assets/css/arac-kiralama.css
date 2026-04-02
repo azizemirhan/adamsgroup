@@ -1,0 +1,703 @@
+/* ═══════════════════════════════════════════════════
+   ARAÇ KİRALAMA PAGE STYLES
+   Color Palette: Navy (#002147), Gold (#C5A059)
+   ═══════════════════════════════════════════════════ */
+
+/* ── PAGE HEADER (same style as hakkimizda) ── */
+.rental-page-header {
+    position: relative;
+    min-height: 340px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 200px 24px 70px;
+    overflow: hidden;
+}
+
+.rental-page-header-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 50%, #001a35 100%);
+    z-index: 1;
+}
+
+.rental-page-header-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+        radial-gradient(ellipse 80% 50% at 20% 40%, rgba(197, 160, 89, 0.12) 0%, transparent 50%),
+        radial-gradient(ellipse 60% 40% at 80% 60%, rgba(197, 160, 89, 0.06) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.rental-page-header-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.5;
+}
+
+.rental-page-header-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+}
+
+.rental-page-header-subtitle {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 16px;
+}
+
+.rental-page-header-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    color: white;
+    line-height: 1.2;
+    margin-bottom: 24px;
+}
+
+.rental-page-header-title span {
+    color: var(--gold);
+    font-style: italic;
+}
+
+.rental-breadcrumb {
+    margin-top: 24px;
+}
+
+.rental-breadcrumb-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.rental-breadcrumb-list li a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.rental-breadcrumb-list li a:hover {
+    color: var(--gold);
+}
+
+.rental-breadcrumb-list li[aria-current="page"] {
+    color: var(--gold);
+    font-weight: 500;
+}
+
+.rental-breadcrumb-sep {
+    color: rgba(255,255,255,0.4);
+}
+
+
+
+/* ── INTRO SECTION (LIGHT) ── */
+.rental-intro {
+    padding: 80px 24px;
+    background: #ffffff;
+}
+
+.rental-intro-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.rental-intro-inner h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(24px, 3.5vw, 36px);
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 20px;
+    line-height: 1.3;
+}
+
+.rental-intro-inner h2 span {
+    color: var(--gold);
+    font-style: italic;
+}
+
+.rental-intro-inner p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #475569;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+
+/* ── SERVICES GRID (LIGHT) ── */
+.rental-services {
+    padding: 0 24px 100px;
+    background: #ffffff;
+}
+
+.rental-services-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.rental-services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+}
+
+.rental-service-card {
+    position: relative;
+    background: #f8f9fb;
+    border: 1px solid rgba(0, 33, 71, 0.08);
+    border-radius: 20px;
+    padding: 48px 32px 40px;
+    text-align: center;
+    transition: all 0.5s var(--ease);
+    overflow: hidden;
+}
+
+.rental-service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.rental-service-card:hover {
+    background: #ffffff;
+    border-color: rgba(197, 160, 89, 0.35);
+    transform: translateY(-8px);
+    box-shadow: 0 24px 60px rgba(0, 33, 71, 0.1);
+}
+
+.rental-service-card:hover::before {
+    opacity: 1;
+}
+
+.rental-service-icon {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 33, 71, 0.05);
+    border: 1px solid rgba(0, 33, 71, 0.1);
+    border-radius: 20px;
+    transition: all 0.4s var(--ease);
+}
+
+.rental-service-card:hover .rental-service-icon {
+    background: rgba(197, 160, 89, 0.1);
+    border-color: rgba(197, 160, 89, 0.3);
+    transform: scale(1.08);
+}
+
+.rental-service-icon svg {
+    width: 32px;
+    height: 32px;
+    stroke: var(--gold);
+    stroke-width: 1.5;
+    fill: none;
+}
+
+.rental-service-card h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 12px;
+    letter-spacing: -0.2px;
+}
+
+.rental-service-card p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #64748b;
+}
+
+
+/* ── FLEET SECTION ── */
+.rental-fleet {
+    padding: 100px 24px;
+    background: linear-gradient(180deg, var(--navy-deep) 0%, #010d1a 100%);
+}
+
+.rental-fleet-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.rental-fleet-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.rental-fleet-header span {
+    display: inline-block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+}
+
+.rental-fleet-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.2;
+}
+
+.rental-fleet-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+}
+
+.rental-fleet-card {
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    transition: all 0.5s var(--ease);
+}
+
+.rental-fleet-card:hover {
+    border-color: rgba(197, 160, 89, 0.25);
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+.rental-fleet-image {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+}
+
+.rental-fleet-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s var(--ease);
+}
+
+.rental-fleet-card:hover .rental-fleet-image img {
+    transform: scale(1.08);
+}
+
+.rental-fleet-badge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    padding: 6px 14px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--navy);
+    background: var(--gold);
+    border-radius: 100px;
+}
+
+.rental-fleet-body {
+    padding: 28px 24px;
+}
+
+.rental-fleet-body h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 8px;
+}
+
+.rental-fleet-body p {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+.rental-fleet-specs {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.rental-fleet-spec {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.rental-fleet-spec svg {
+    width: 14px;
+    height: 14px;
+    stroke: var(--gold);
+    stroke-width: 2;
+    fill: none;
+}
+
+.rental-fleet-price {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.rental-fleet-price strong {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--gold);
+}
+
+.rental-fleet-price span {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.4);
+    font-weight: 500;
+}
+
+.rental-fleet-price small {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+
+/* ── ADVANTAGES SECTION (LIGHT) ── */
+.rental-advantages {
+    padding: 100px 24px;
+    background: #f8f9fb;
+    position: relative;
+    overflow: hidden;
+}
+
+.rental-advantages::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    right: -200px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(0, 33, 71, 0.03) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.rental-advantages-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.rental-advantages-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.rental-advantages-header span {
+    display: inline-block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+}
+
+.rental-advantages-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.2;
+}
+
+.rental-advantages-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.rental-advantage-item {
+    text-align: center;
+    padding: 40px 20px;
+    background: #ffffff;
+    border: 1px solid rgba(0, 33, 71, 0.06);
+    border-radius: 16px;
+    transition: all 0.4s var(--ease);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+}
+
+.rental-advantage-item:hover {
+    background: #ffffff;
+    border-color: rgba(197, 160, 89, 0.35);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 36px rgba(0, 33, 71, 0.08);
+}
+
+.rental-advantage-icon {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 33, 71, 0.05);
+    border-radius: 14px;
+}
+
+.rental-advantage-icon svg {
+    width: 26px;
+    height: 26px;
+    stroke: var(--gold);
+    stroke-width: 1.5;
+    fill: none;
+}
+
+.rental-advantage-item h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 8px;
+}
+
+.rental-advantage-item p {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #64748b;
+}
+
+
+/* ── CTA SECTION (LIGHT) ── */
+.rental-cta {
+    padding: 100px 24px;
+    background: #ffffff;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.rental-cta::before {
+    content: '';
+    position: absolute;
+    bottom: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 300px;
+    background: radial-gradient(ellipse, rgba(0, 33, 71, 0.03) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.rental-cta-inner {
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.rental-cta-inner h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 18px;
+}
+
+.rental-cta-inner p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #64748b;
+    margin-bottom: 40px;
+}
+
+.rental-cta-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.rental-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 36px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    border-radius: 100px;
+    transition: all 0.4s var(--ease);
+}
+
+.rental-cta-btn svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    stroke-width: 2;
+    fill: none;
+}
+
+.rental-cta-btn--primary {
+    background: var(--gold);
+    color: var(--navy);
+    border: 1px solid var(--gold);
+}
+
+.rental-cta-btn--primary:hover {
+    background: var(--gold-light);
+    box-shadow: 0 12px 36px rgba(197, 160, 89, 0.3);
+    transform: translateY(-3px);
+}
+
+.rental-cta-btn--secondary {
+    background: transparent;
+    color: var(--navy);
+    border: 1px solid rgba(0, 33, 71, 0.2);
+}
+
+.rental-cta-btn--secondary:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: rgba(197, 160, 89, 0.06);
+}
+
+.rental-cta-btn--whatsapp {
+    background: #25D366;
+    color: #ffffff;
+    border: 1px solid #25D366;
+}
+
+.rental-cta-btn--whatsapp svg {
+    fill: currentColor;
+    stroke: none;
+}
+
+.rental-cta-btn--whatsapp:hover {
+    background: #20bd5a;
+    box-shadow: 0 12px 36px rgba(37, 211, 102, 0.3);
+    transform: translateY(-3px);
+}
+
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+    .rental-services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .rental-fleet-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .rental-advantages-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .rental-page-header {
+        min-height: 300px;
+        padding: 160px 20px 50px;
+    }
+
+    .rental-intro {
+        padding: 60px 16px;
+    }
+
+    .rental-services {
+        padding: 0 16px 60px;
+    }
+
+    .rental-services-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .rental-service-card {
+        padding: 32px 24px;
+    }
+
+    .rental-fleet {
+        padding: 60px 16px;
+    }
+
+    .rental-fleet-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .rental-advantages {
+        padding: 60px 16px;
+    }
+
+    .rental-advantages-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
+
+    .rental-advantage-item {
+        padding: 28px 16px;
+    }
+
+    .rental-cta {
+        padding: 60px 16px;
+    }
+
+    .rental-cta-buttons {
+        flex-direction: column;
+    }
+
+    .rental-cta-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .rental-advantages-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .rental-page-header {
+        padding: 140px 16px 40px;
+    }
+}

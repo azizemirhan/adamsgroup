@@ -1,8 +1,8 @@
-{
-  "name": "alfagayrimenkul",
+﻿{
+  "name": "adamsgroup",
   "version": "1.0.0",
   "private": true,
-  "description": "Alfa Gayrimenkul Web Sitesi",
+  "description": "Adams Group Web Sitesi",
   "scripts": {
     "build": "node build.js",
     "deploy": "wrangler deploy",
@@ -15,3 +15,4 @@
     "node": ">=18"
   }
 }
+

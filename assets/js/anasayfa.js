@@ -61,7 +61,7 @@
        ══════════════════════════════════════ */
     var locInput = document.getElementById('searchLocation');
     var acDropdown = document.getElementById('searchAutocomplete');
-    var acItems = acDropdown.querySelectorAll('.search-autocomplete-item');
+    var acItems = acDropdown ? acDropdown.querySelectorAll('.search-autocomplete-item') : [];
 
     // Sample data for filtering
     var locations = [
@@ -77,6 +77,7 @@
     ];
 
     function showAutocomplete(query) {
+        if (!acDropdown) return;
         var q = query.toLowerCase();
         var filtered = locations.filter(function (loc) {
             return loc.text.toLowerCase().indexOf(q) !== -1;
@@ -116,19 +117,21 @@
         acDropdown.classList.add('visible');
     }
 
-    locInput.addEventListener('input', function () {
-        showAutocomplete(locInput.value.trim());
-    });
-
-    locInput.addEventListener('focus', function () {
-        if (locInput.value.trim().length >= 1) {
+    if (locInput) {
+        locInput.addEventListener('input', function () {
             showAutocomplete(locInput.value.trim());
-        }
-    });
+        });
+
+        locInput.addEventListener('focus', function () {
+            if (locInput.value.trim().length >= 1) {
+                showAutocomplete(locInput.value.trim());
+            }
+        });
+    }
 
     // Close autocomplete on outside click
     document.addEventListener('click', function (e) {
-        if (!locInput.contains(e.target) && !acDropdown.contains(e.target)) {
+        if (locInput && !locInput.contains(e.target) && acDropdown && !acDropdown.contains(e.target)) {
             acDropdown.classList.remove('visible');
         }
     });
@@ -147,6 +150,7 @@
     var priceMax = document.getElementById('priceMax');
 
     [priceMin, priceMax].forEach(function (input) {
+        if (!input) return;
         input.addEventListener('input', function () {
             var raw = input.value.replace(/[^\d]/g, '');
             if (raw) {
@@ -171,22 +175,27 @@
     /* ══════════════════════════════════════
        FORM SUBMIT
        ══════════════════════════════════════ */
-    document.getElementById('searchForm').addEventListener('submit', function (e) {
-        e.preventDefault();
-        var activeTab = document.querySelector('.search-tab.active');
-        var type = activeTab ? activeTab.getAttribute('data-tab') : 'satilik';
-        var location = locInput.value;
-        var category = document.getElementById('searchCategory').value;
+    var searchForm = document.getElementById('searchForm');
+    if (searchForm) {
+        searchForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            var activeTab = document.querySelector('.search-tab.active');
+            var type = activeTab ? activeTab.getAttribute('data-tab') : 'satilik';
+            var location = locInput ? locInput.value : '';
+            var category = document.getElementById('searchCategory') ? document.getElementById('searchCategory').value : '';
 
-        // Visual feedback
-        var btn = this.querySelector('.search-btn');
-        btn.style.transform = 'scale(0.96)';
-        setTimeout(function () {
-            btn.style.transform = '';
-        }, 200);
+            // Visual feedback
+            var btn = this.querySelector('.search-btn');
+            if (btn) {
+                btn.style.transform = 'scale(0.96)';
+                setTimeout(function () {
+                    btn.style.transform = '';
+                }, 200);
+            }
 
-        console.log('Arama:', { type: type, location: location, category: category });
-    });
+            console.log('Arama:', { type: type, location: location, category: category });
+        });
+    }
 
 
     /* ══════════════════════════════════════
@@ -228,173 +237,51 @@
 })();
 
 /* ═══════════════════════════════════════════════════
-   BENTO VIDEO GRID — Interactions & Animations
+   GLOBAL SCROLL REVEAL & INTERACTIONS
    ═══════════════════════════════════════════════════ */
 (function () {
     'use strict';
 
-    /* ── Scroll Reveal Animation ── */
-    const bentoCards = document.querySelectorAll('.bento-card');
-    
-    if (bentoCards.length > 0) {
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px 0px -100px 0px',
-            threshold: 0.1
-        };
-
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('revealed');
-                    // Start video when card is visible
-                    const video = entry.target.querySelector('.bento-video');
-                    if (video && video.paused) {
-                        video.play().catch(() => {
-                            // Autoplay blocked, keep poster visible
-                        });
-                    }
-                } else {
-                    // Optional: Pause video when out of view for performance
-                    const video = entry.target.querySelector('.bento-video');
-                    if (video && !video.paused) {
-                        video.pause();
-                    }
-                }
-            });
-        }, observerOptions);
-
-        bentoCards.forEach(card => {
-            revealObserver.observe(card);
+    /* ── Global Scroll Reveal Animation ── */
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+            }
         });
-    }
-
-    /* ── Video Optimization ── */
-    const bentoVideos = document.querySelectorAll('.bento-video');
-    
-    bentoVideos.forEach(video => {
-        // Ensure videos are properly loaded
-        video.addEventListener('loadeddata', function () {
-            this.classList.add('loaded');
-        });
-
-        // Handle video errors gracefully
-        video.addEventListener('error', function () {
-            // Poster image will remain visible
-            console.log('Video yüklenemedi, poster görseli gösteriliyor.');
-        });
+    }, {
+        root: null,
+        rootMargin: '0px 0px -100px 0px',
+        threshold: 0.1
     });
 
-    /* ── Card Click Handler ── */
-    bentoCards.forEach(card => {
-        card.addEventListener('click', function (e) {
-            // If clicked on CTA link, let it handle the navigation
-            if (e.target.closest('.bento-cta')) {
-                return;
-            }
-            
-            // Otherwise, find the CTA link and trigger it
-            const cta = this.querySelector('.bento-cta');
-            if (cta) {
-                const href = cta.getAttribute('href');
-                if (href && href !== '#') {
-                    window.location.href = href;
-                }
-            }
+    const revealItems = document.querySelectorAll('.reveal, .property-card, .testimonial-card, .blog-card, .sell-section, .quick-features-section, .qf-action-card, .qf-city-card');
+    revealItems.forEach(el => revealObserver.observe(el));
+
+    /* ── Quick Features Card Click Handler ── */
+    const actionCards = document.querySelectorAll('.qf-action-card, .qf-loc-card');
+    actionCards.forEach(card => {
+        card.addEventListener('mousedown', function () {
+            this.style.transform = 'translateY(-2px) scale(0.98)';
         });
-
-        // Add touch feedback for mobile
-        card.addEventListener('touchstart', function () {
-            this.style.transform = 'scale(0.98)';
-        }, { passive: true });
-
-        card.addEventListener('touchend', function () {
+        card.addEventListener('mouseup', function () {
             this.style.transform = '';
-        }, { passive: true });
+        });
     });
 
-    /* ── Parallax Effect on Scroll ── */
-    let ticking = false;
-    
-    function updateParallax() {
-        const scrolled = window.pageYOffset;
-        const citiesSection = document.getElementById('citiesSection');
-        
-        if (citiesSection) {
-            const sectionTop = citiesSection.offsetTop;
-            const sectionHeight = citiesSection.offsetHeight;
-            const windowHeight = window.innerHeight;
-            
-            // Only apply parallax when section is in view
-            if (scrolled + windowHeight > sectionTop && scrolled < sectionTop + sectionHeight) {
-                const parallaxOffset = (scrolled - sectionTop) * 0.05;
-                const header = citiesSection.querySelector('.cities-header');
-                if (header) {
-                    header.style.transform = `translateY(${parallaxOffset}px)`;
-                }
-            }
-        }
-        
-        ticking = false;
-    }
-
-    window.addEventListener('scroll', function () {
-        if (!ticking) {
-            requestAnimationFrame(updateParallax);
-            ticking = true;
-        }
-    }, { passive: true });
-
-})();
-
-
-/* ═══════════════════════════════════════════════════
-   FEATURED PROPERTIES — Scroll Reveal Animation
-   ═══════════════════════════════════════════════════ */
-(function () {
-    'use strict';
-
+    /* ── Featured Card Click Handler ── */
     const featuredCards = document.querySelectorAll('.property-card');
-    
-    if (featuredCards.length > 0) {
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px 0px -50px 0px',
-            threshold: 0.1
-        };
-
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('revealed');
-                }
-            });
-        }, observerOptions);
-
-        featuredCards.forEach(card => {
-            revealObserver.observe(card);
-        });
-    }
-
-    /* ── Card Click Handler ── */
     featuredCards.forEach(card => {
         card.addEventListener('click', function (e) {
-            // If clicked on button, handle separately
             if (e.target.closest('.property-view-btn')) {
                 e.preventDefault();
-                // Add click animation
                 const btn = e.target.closest('.property-view-btn');
                 btn.style.transform = 'scale(0.95)';
                 setTimeout(() => {
                     btn.style.transform = '';
                 }, 150);
-                
-                // Navigate to property detail
-                console.log('İlan detayına gidiliyor...');
                 return;
             }
-            
-            // Trigger the view button click effect
             const viewBtn = this.querySelector('.property-view-btn');
             if (viewBtn) {
                 viewBtn.click();
@@ -402,57 +289,30 @@
         });
     });
 
-    /* ── View All Button Animation ── */
-    const viewAllBtn = document.querySelector('.featured-all-btn');
-    if (viewAllBtn) {
-        viewAllBtn.addEventListener('click', function (e) {
-            e.preventDefault();
+    /* ── View All Buttons Animation ── */
+    const actionBtns = document.querySelectorAll('.featured-all-btn, .blog-all-btn, .bento-cta');
+    actionBtns.forEach(btn => {
+        btn.addEventListener('click', function (e) {
             this.style.transform = 'scale(0.98)';
             setTimeout(() => {
                 this.style.transform = '';
             }, 150);
-            
-            console.log('Tüm ilanlar sayfasına gidiliyor...');
         });
-    }
+    });
 
 })();
 
 
 /* ═══════════════════════════════════════════════════
-   SELL SECTION — Lead Generation Form & Animations
+   SELL SECTION — Lead Generation Form
    ═══════════════════════════════════════════════════ */
 (function () {
     'use strict';
 
-    /* ── Scroll Reveal Animation ── */
-    const sellSection = document.getElementById('sellSection');
-    
-    if (sellSection) {
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px 0px -100px 0px',
-            threshold: 0.15
-        };
-
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('revealed');
-                }
-            });
-        }, observerOptions);
-
-        revealObserver.observe(sellSection);
-    }
-
-    /* ── Phone Input Formatting ── */
     const phoneInput = document.getElementById('sellPhone');
-    
     if (phoneInput) {
         phoneInput.addEventListener('input', function (e) {
             let value = e.target.value.replace(/\D/g, '');
-            
             if (value.length > 0) {
                 if (value.length <= 3) {
                     value = '0 (' + value;
@@ -464,12 +324,10 @@
                     value = '0 (' + value.slice(0, 3) + ') ' + value.slice(3, 6) + ' ' + value.slice(6, 8) + ' ' + value.slice(8, 10);
                 }
             }
-            
             e.target.value = value;
         });
     }
 
-    /* ── Form Submission ── */
     const sellForm = document.getElementById('sellForm');
     const sellSuccess = document.getElementById('sellSuccess');
     const sellBenefits = document.querySelector('.sell-benefits');
@@ -479,65 +337,45 @@
     if (sellForm) {
         sellForm.addEventListener('submit', function (e) {
             e.preventDefault();
-            
-            // Get form data
             const formData = new FormData(sellForm);
             const data = Object.fromEntries(formData);
-            
-            // Simulate API call
             const submitBtn = sellForm.querySelector('.sell-form-submit');
             const originalText = submitBtn.innerHTML;
             
-            // Loading state
             submitBtn.disabled = true;
             submitBtn.innerHTML = '<span>Gönderiliyor...</span>';
             
             setTimeout(() => {
-                // Hide form elements
                 sellForm.classList.add('hidden');
                 if (sellBenefits) sellBenefits.classList.add('hidden');
                 if (sellFormHeader) sellFormHeader.style.display = 'none';
-                
-                // Show success message
-                sellSuccess.classList.add('visible');
-                
-                // Log data (in production, send to server)
+                if (sellSuccess) sellSuccess.classList.add('visible');
                 console.log('Lead Generation Data:', data);
-                
-                // Reset button
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = originalText;
-                
             }, 1500);
         });
     }
 
-    /* ── Reset Form ── */
     if (sellResetBtn) {
         sellResetBtn.addEventListener('click', function () {
-            // Reset form
             sellForm.reset();
-            
-            // Show form elements
             sellForm.classList.remove('hidden');
             if (sellBenefits) sellBenefits.classList.remove('hidden');
             if (sellFormHeader) sellFormHeader.style.display = 'block';
-            
-            // Hide success
-            sellSuccess.classList.remove('visible');
+            if (sellSuccess) sellSuccess.classList.remove('visible');
         });
     }
 
-    /* ── Input Focus Effects ── */
     const sellInputs = document.querySelectorAll('.sell-form-input, .sell-form-select');
-    
     sellInputs.forEach(input => {
         input.addEventListener('focus', function () {
-            this.closest('.sell-form-group').style.transform = 'scale(1.02)';
+            const group = this.closest('.sell-form-group');
+            if (group) group.style.transform = 'scale(1.02)';
         });
-        
         input.addEventListener('blur', function () {
-            this.closest('.sell-form-group').style.transform = 'scale(1)';
+            const group = this.closest('.sell-form-group');
+            if (group) group.style.transform = 'scale(1)';
         });
     });
 
@@ -545,12 +383,11 @@
 
 
 /* ═══════════════════════════════════════════════════
-   TESTIMONIALS SLIDER & BLOG ANIMATIONS
+   TESTIMONIALS SLIDER
    ═══════════════════════════════════════════════════ */
 (function () {
     'use strict';
 
-    /* ── Testimonials Slider ── */
     const slider = document.getElementById('testimonialsSlider');
     const track = document.getElementById('testimonialsTrack');
     const prevBtn = document.getElementById('testimonialPrev');
@@ -563,21 +400,22 @@
         let cardsPerView = window.innerWidth > 992 ? 2 : 1;
         const totalSlides = Math.ceil(cards.length / cardsPerView);
         
-        // Create dots
-        for (let i = 0; i < totalSlides; i++) {
-            const dot = document.createElement('button');
-            dot.className = 'testimonials-dot' + (i === 0 ? ' active' : '');
-            dot.setAttribute('aria-label', 'Sayfa ' + (i + 1));
-            dot.addEventListener('click', () => goToSlide(i));
-            dotsContainer.appendChild(dot);
+        if (dotsContainer) {
+            dotsContainer.innerHTML = '';
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('button');
+                dot.className = 'testimonials-dot' + (i === 0 ? ' active' : '');
+                dot.setAttribute('aria-label', 'Sayfa ' + (i + 1));
+                const slideIndex = i;
+                dot.addEventListener('click', () => goToSlide(slideIndex));
+                dotsContainer.appendChild(dot);
+            }
         }
         
-        const dots = dotsContainer.querySelectorAll('.testimonials-dot');
-        
         function updateSlider() {
-            const cardWidth = cards[0].offsetWidth + 30; // card width + gap
+            const dots = dotsContainer ? dotsContainer.querySelectorAll('.testimonials-dot') : [];
+            const cardWidth = cards[0].offsetWidth + 30;
             track.style.transform = 'translateX(-' + (currentIndex * cardWidth * cardsPerView) + 'px)';
-            
             dots.forEach((dot, i) => {
                 dot.classList.toggle('active', i === currentIndex);
             });
@@ -590,28 +428,18 @@
             updateSlider();
         }
         
-        function nextSlide() {
-            goToSlide(currentIndex + 1);
-        }
+        function nextSlide() { goToSlide(currentIndex + 1); }
+        function prevSlide() { goToSlide(currentIndex - 1); }
         
-        function prevSlide() {
-            goToSlide(currentIndex - 1);
-        }
-        
-        // Event listeners
         if (nextBtn) nextBtn.addEventListener('click', nextSlide);
         if (prevBtn) prevBtn.addEventListener('click', prevSlide);
         
-        // Auto slide
         let autoSlide = setInterval(nextSlide, 5000);
-        
-        // Pause on hover
         slider.addEventListener('mouseenter', () => clearInterval(autoSlide));
         slider.addEventListener('mouseleave', () => {
             autoSlide = setInterval(nextSlide, 5000);
         });
         
-        // Handle resize
         window.addEventListener('resize', () => {
             const newCardsPerView = window.innerWidth > 992 ? 2 : 1;
             if (newCardsPerView !== cardsPerView) {
@@ -622,46 +450,14 @@
         });
     }
 
-    /* ── Scroll Reveal Animations ── */
-    const testimonialCards = document.querySelectorAll('.testimonial-card');
     const blogCards = document.querySelectorAll('.blog-card');
-    
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('revealed');
-            }
-        });
-    }, {
-        root: null,
-        rootMargin: '0px 0px -50px 0px',
-        threshold: 0.1
-    });
-    
-    testimonialCards.forEach((card, i) => {
-        card.style.transitionDelay = (i * 100) + 'ms';
-        revealObserver.observe(card);
-    });
-    
-    blogCards.forEach((card, i) => {
-        card.style.transitionDelay = (i * 100) + 'ms';
-        revealObserver.observe(card);
-    });
-
-    /* ── Blog Link Click Handler ── */
     blogCards.forEach(card => {
         const link = card.querySelector('.blog-link');
         if (link) {
             link.addEventListener('click', function (e) {
                 e.preventDefault();
-                
-                // Animation feedback
                 this.style.transform = 'translateX(5px)';
-                setTimeout(() => {
-                    this.style.transform = '';
-                }, 200);
-                
-                console.log('Blog yazısına gidiliyor...');
+                setTimeout(() => { this.style.transform = ''; }, 200);
             });
         }
     });

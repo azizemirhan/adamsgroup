@@ -1,4 +1,5 @@
 (function () {
+    console.log('AdamsGroup List JS Initialized...');
     'use strict';
 
     /* ── Room Filter Toggle ── */
@@ -31,12 +32,24 @@
     });
 
     /* ── View Toggle ── */
+    var propertyGrid = document.getElementById('propertyGrid');
     document.querySelectorAll('.view-toggle-btn').forEach(function (btn) {
-        btn.addEventListener('click', function () {
+        btn.addEventListener('click', function (e) {
+            e.preventDefault();
+            var view = btn.getAttribute('data-view');
             document.querySelectorAll('.view-toggle-btn').forEach(function (b) {
                 b.classList.remove('active');
             });
             btn.classList.add('active');
+
+            var grid = document.getElementById('propertyGrid');
+            if (grid) {
+                if (view === 'list') {
+                    grid.classList.add('list-view');
+                } else {
+                    grid.classList.remove('list-view');
+                }
+            }
         });
     });
 
@@ -101,26 +114,28 @@
     var startY = 0;
     var currentY = 0;
 
-    bottomSheet.addEventListener('touchstart', function (e) {
-        startY = e.touches[0].clientY;
-    }, { passive: true });
+    if (bottomSheet) {
+        bottomSheet.addEventListener('touchstart', function (e) {
+            startY = e.touches[0].clientY;
+        }, { passive: true });
 
-    bottomSheet.addEventListener('touchmove', function (e) {
-        currentY = e.touches[0].clientY;
-        var diff = currentY - startY;
-        if (diff > 0) {
-            bottomSheet.style.transform = 'translateY(' + diff + 'px)';
-        }
-    }, { passive: true });
+        bottomSheet.addEventListener('touchmove', function (e) {
+            currentY = e.touches[0].clientY;
+            var diff = currentY - startY;
+            if (diff > 0) {
+                bottomSheet.style.transform = 'translateY(' + diff + 'px)';
+            }
+        }, { passive: true });
 
-    bottomSheet.addEventListener('touchend', function () {
-        var diff = currentY - startY;
-        if (diff > 120) {
-            closeBottomSheet();
-        }
-        bottomSheet.style.transform = '';
-        startY = 0;
-        currentY = 0;
-    });
+        bottomSheet.addEventListener('touchend', function () {
+            var diff = currentY - startY;
+            if (diff > 120) {
+                closeBottomSheet();
+            }
+            bottomSheet.style.transform = '';
+            startY = 0;
+            currentY = 0;
+        });
+    }
 
 })();

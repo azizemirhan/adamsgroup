@@ -242,6 +242,7 @@ HEADER INNER — SPLIT NAVIGATION
     z-index: 2;
     display: grid;
     grid-template-columns: 1fr auto 1fr;
+    grid-template-rows: var(--header-height);
     align-items: center;
     height: 100%;
     max-width: 1400px;
@@ -273,46 +274,40 @@ LOGO — CENTERED CIRCLE (OVERLAPPING)
 
 .logo-mark {
     position: relative;
-    width: 110px;
-    height: 110px;
-    border-radius: 50%;
-    border: 3px solid var(--gold);
+    width: 120px;
+    height: 120px;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 500ms var(--transition-smooth);
-    overflow: hidden;
-    background: #fff;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    overflow: visible;
+    background: transparent;
     /* Logo starts near top of header, overflows below */
     margin-top: 5px;
 }
 
 .header.scrolled .logo-mark {
-    width: 110px;
-    height: 110px;
+    width: 100px;
+    height: 100px;
     margin-top: 5px;
-    border-width: 3px;
 }
 
 .logo-mark::before {
-    content: '';
-    position: absolute;
-    inset: 4px;
-    border-radius: 50%;
-    border: 1px solid rgba(197, 160, 89, 0.3);
+    display: none;
 }
 
 .logo-mark img {
-    width: 80%;
-    height: 80%;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
     transition: all 400ms var(--transition-smooth);
+    /* Glitch fix: filter removed */
+    filter: none !important;
 }
 
 .header.scrolled .logo-mark img {
-    width: 80%;
-    height: 80%;
+    width: 100%;
+    height: 100%;
 }
 
 /* ═══════════════════════════════════════
@@ -330,13 +325,13 @@ NAVIGATION — LEFT & RIGHT
 .nav-left {
     justify-self: end;
     padding-right: 70px;
-    margin-top: -30px;
+    align-self: center;
 }
 
 .nav-right {
     justify-self: start;
     padding-left: 70px;
-    margin-top: -30px;
+    align-self: center;
 }
 
 /* Inner ul — direct child only, prevent affecting mega menu lists */
@@ -373,7 +368,10 @@ NAVIGATION — LEFT & RIGHT
     white-space: nowrap;
 }
 
-.nav-link:hover {
+.nav-link:hover,
+.nav-item:hover .nav-link,
+.nav-item.mega-open .nav-link,
+.nav-item.active .nav-link {
     color: var(--gold-light);
 }
 
@@ -392,6 +390,8 @@ NAVIGATION — LEFT & RIGHT
 }
 
 .nav-link:hover::after,
+.nav-item:hover .nav-link::after,
+.nav-item.mega-open .nav-link::after,
 .nav-item.active .nav-link::after {
     transform: scaleX(1);
     transform-origin: left;
@@ -414,6 +414,65 @@ NAVIGATION — LEFT & RIGHT
     opacity: 1;
 }
 
+/* Nav Icons */
+.nav-icon {
+    width: 14px;
+    height: 14px;
+    opacity: 1;
+    color: var(--gold);
+    transition: opacity 300ms ease, transform 300ms ease;
+}
+
+.nav-link:hover .nav-icon,
+.nav-item:hover .nav-icon,
+.nav-item.mega-open .nav-icon,
+.nav-item.active .nav-icon {
+    transform: translateY(-2px);
+}
+
+/* İlan Ver Button */
+.nav-btn-post {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 18px;
+    margin-right: 15px;
+    background: rgba(197, 160, 89, 0.1);
+    border: 1px solid var(--gold);
+    border-radius: 50px;
+    color: var(--gold);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 400ms ease;
+    white-space: nowrap;
+}
+
+.nav-btn-post svg {
+    width: 14px;
+    height: 14px;
+    transition: transform 300ms ease;
+}
+
+.nav-btn-post:hover {
+    background: var(--gold);
+    color: var(--navy-deep);
+    box-shadow: 0 4px 15px rgba(197, 160, 89, 0.3);
+}
+
+.nav-btn-post:hover svg {
+    transform: rotate(90deg);
+}
+
+@media (max-width: 1024px) {
+    .nav-btn-post {
+        display: none;
+    }
+}
+
 /* ═══════════════════════════════════════
 MEGA MENU — DARK (Satılık/Kiralık)
 ═══════════════════════════════════════ */
@@ -433,16 +492,7 @@ MEGA MENU — DARK (Satılık/Kiralık)
         visibility 0ms linear 420ms;
 }
 
-/* Invisible hover bridge — prevents menu from closing
-   when mouse travels from nav-link to mega menu */
-.mega-menu::before {
-    content: '';
-    position: absolute;
-    top: -40px;
-    left: 0;
-    right: 0;
-    height: 40px;
-}
+
 
 .mega-menu.open {
     opacity: 1;
@@ -1248,15 +1298,15 @@ RESPONSIVE
     }
 
     .logo-mark {
-        width: 100px;
-        height: 100px;
+        width: 120px;
+        height: 120px;
         margin-top: 10px;
         border-width: 2px;
     }
 
     .header.scrolled .logo-mark {
-        width: 100px;
-        height: 100px;
+        width: 110px;
+        height: 110px;
         margin-top: 10px;
         border-width: 2px;
     }
@@ -1276,8 +1326,8 @@ RESPONSIVE
 
 @media (max-width: 420px) {
     .logo-mark {
-        width: 68px;
-        height: 68px;
+        width: 90px;
+        height: 90px;
         margin-top: 8px;
     }
 
@@ -1384,3 +1434,176 @@ DEMO PAGE CONTENT
     color: var(--text-secondary);
     letter-spacing: 1px;
 }
+
+/* ═══════════════════════════════════════
+USER AUTH HEADER COMPONENT
+═══════════════════════════════════════ */
+.header-auth {
+    position: relative;
+    margin-left: 15px;
+}
+
+.auth-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 50px;
+    padding: 6px 6px 6px 16px;
+    cursor: pointer;
+    transition: all 300ms ease;
+    text-decoration: none;
+}
+
+.auth-btn:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-color: var(--gold);
+}
+
+.auth-texts {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    line-height: 1.2;
+}
+
+.auth-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #333;
+}
+
+.auth-sub {
+    font-size: 11px;
+    font-weight: 500;
+    color: #666;
+}
+
+.auth-sub .text-red {
+    color: var(--gold); /* Primary brand color */
+    font-weight: 700;
+}
+
+.auth-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    background-color: var(--navy);
+    border-radius: 50%;
+    color: #fff;
+}
+
+.auth-icon svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
+/* Auth Dropdown */
+.header-auth:hover .auth-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.auth-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 15px);
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+    background: #fff;
+    width: 260px;
+    border-radius: 4px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 300ms ease;
+    z-index: 100;
+    border: 1px solid #eee;
+}
+
+/* Triangle arrow */
+.auth-dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 12px;
+    height: 12px;
+    background: #fff;
+    border-left: 1px solid #eee;
+    border-top: 1px solid #eee;
+}
+
+.auth-btn-primary {
+    display: block;
+    width: 100%;
+    background: var(--gold);
+    color: #fff;
+    text-align: center;
+    padding: 12px;
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    margin-bottom: 20px;
+    transition: background 300ms ease;
+}
+
+.auth-btn-primary:hover {
+    background: var(--gold-light);
+    color: #fff;
+}
+
+.auth-dropdown-title {
+    display: block;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.auth-dropdown-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.auth-dropdown-list li {
+    margin-bottom: 2px;
+}
+
+.auth-dropdown-list a {
+    display: block;
+    padding: 12px 10px;
+    color: #666;
+    font-size: 15px;
+    font-weight: 400;
+    text-decoration: none;
+    transition: all 200ms ease;
+    border-radius: 4px;
+}
+
+.auth-dropdown-list a:hover {
+    color: #333;
+    background: #fcfcfc;
+}
+
+/* Invisible bridge for hover */
+.auth-dropdown-menu::after {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 0;
+    width: 100%;
+    height: 20px;
+}

@@ -736,6 +736,70 @@ select {
     transform: scale(1.05);
 }
 
+/* Overlay with View Button */
+.property-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(0, 14, 31, 0.9) 0%,
+        rgba(0, 14, 31, 0.4) 50%,
+        transparent 100%
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.property-card:hover .property-overlay {
+    opacity: 1;
+}
+
+.property-view-btn {
+    padding: 10px 24px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--navy-deep);
+    background: rgba(197, 160, 89, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    cursor: pointer;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: transform 0.4s var(--ease), opacity 0.4s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.property-card:hover .property-view-btn {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.property-view-btn:hover {
+    background: var(--gold);
+    box-shadow: 0 5px 20px rgba(197, 160, 89, 0.4);
+}
+
+@media (max-width: 640px) {
+    .property-view-btn {
+        opacity: 1;
+        transform: translateY(0);
+        position: absolute;
+        bottom: 16px;
+        right: 16px;
+    }
+    .property-overlay {
+        opacity: 1;
+        background: linear-gradient(to top, rgba(0, 14, 31, 0.95) 0%, rgba(0, 14, 31, 0.3) 60%, transparent 100%);
+    }
+}
+
 /* Badge */
 .card-badge {
     position: absolute;
@@ -1273,5 +1337,96 @@ select {
 
     .card-feature-label {
         font-size: 9px;
+    }
+}
+
+/* ═══════════════════════════════════════════════════
+     LIST VIEW STYLE (Moved to end to ensure override)
+     ═══════════════════════════════════════════════════ */
+.property-grid.list-view {
+    grid-template-columns: 1fr !important;
+    gap: 24px;
+}
+
+.property-grid.list-view .property-card {
+    display: flex;
+    flex-direction: row;
+    height: auto;
+    min-height: 280px;
+    background: var(--white);
+    border-radius: 12px;
+}
+
+.property-grid.list-view .card-image {
+    width: 380px !important;
+    height: inherit;
+    aspect-ratio: auto !important;
+    flex-shrink: 0;
+}
+
+.property-grid.list-view .card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 28px 32px;
+}
+
+.property-grid.list-view .card-price {
+    margin-bottom: 6px;
+    font-size: 26px;
+}
+
+.property-grid.list-view .card-title {
+    font-size: 22px;
+    margin-bottom: 8px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    line-clamp: 1; /* Fixed Lint ID: 8357a7b9-a2d2-41d8-a3b5-8decf706de9c */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.property-grid.list-view .card-features {
+    margin: 16px 0;
+    padding: 12px 0;
+    border-top: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light);
+    display: flex;
+    gap: 24px;
+    width: 100%;
+    justify-content: flex-start;
+}
+
+.property-grid.list-view .card-feature {
+    border: none;
+    padding: 0;
+    margin: 0;
+    flex: 0 1 auto;
+}
+
+.property-grid.list-view .property-actions {
+    margin-top: auto;
+    grid-template-columns: 200px 200px;
+    gap: 12px;
+}
+
+@media (max-width: 992px) {
+    .property-grid.list-view .property-card {
+        flex-direction: column;
+        height: auto;
+        min-height: unset;
+    }
+    .property-grid.list-view .card-image {
+        width: 100% !important;
+        height: 240px;
+    }
+    .property-grid.list-view .card-body {
+        padding: 24px;
+    }
+    .property-grid.list-view .property-actions {
+        grid-template-columns: 1fr 1fr;
+    }
+    .property-grid.list-view .card-features {
+        gap: 16px;
     }
 }

@@ -156,7 +156,7 @@
     transform: translateY(-3px);
 }
 
-/* Premium Square Logo Frame */
+/* Premium Transparent Logo Frame */
 .footer-logo-mark {
     position: relative;
     width: 150px;
@@ -165,71 +165,36 @@
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    overflow: hidden;
-    /* Multi-layer border effect */
-    border: 2px solid var(--gold);
-    background: #fff;
-    box-shadow:
-        0 0 0 1px rgba(197, 160, 89, 0.3),
-        0 0 0 4px rgba(197, 160, 89, 0.1),
-        0 8px 32px rgba(0, 0, 0, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    overflow: visible;
+    background: transparent;
     transition: all 400ms var(--ease-smooth);
 }
 
 /* Inner decorative border */
 .footer-logo-mark::before {
-    content: '';
-    position: absolute;
-    inset: 6px;
-    border: 1px solid rgba(197, 160, 89, 0.4);
-    pointer-events: none;
-    transition: all 400ms var(--ease-smooth);
+    display: none;
 }
 
 /* Corner accents */
 .footer-logo-mark::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-        linear-gradient(135deg, var(--gold) 0%, transparent 15%),
-        linear-gradient(-45deg, var(--gold) 0%, transparent 15%),
-        linear-gradient(225deg, var(--gold) 0%, transparent 15%),
-        linear-gradient(45deg, var(--gold) 0%, transparent 15%);
-    opacity: 0.15;
-    transition: opacity 400ms ease;
-    pointer-events: none;
+    display: none;
 }
 
 /* Hover effects */
 .footer-logo:hover .footer-logo-mark {
-    border-color: var(--gold-light);
-    box-shadow:
-        0 0 0 1px var(--gold-light),
-        0 0 0 6px rgba(197, 160, 89, 0.15),
-        0 12px 40px rgba(197, 160, 89, 0.2),
-        inset 0 1px 0 rgba(255, 255, 255, 0.15);
     transform: scale(1.02);
 }
 
-.footer-logo:hover .footer-logo-mark::before {
-    inset: 4px;
-    border-color: rgba(197, 160, 89, 0.6);
-}
 
-.footer-logo:hover .footer-logo-mark::after {
-    opacity: 0.3;
-}
 
 /* Logo Image */
 .footer-logo-mark img {
-    width: 70%;
-    height: 70%;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
     position: relative;
     z-index: 2;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
     transition: transform 400ms var(--ease-smooth);
 }
 

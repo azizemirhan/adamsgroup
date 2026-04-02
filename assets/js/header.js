@@ -219,6 +219,65 @@
         }
     });
 
+    /* ── PROPERTY CARD — Seller Popover Logic ── */
+    function initSellerPopovers() {
+        const toggleBtns = document.querySelectorAll('.toggle-seller');
+        const popovers = document.querySelectorAll('.property-seller-popover');
+
+        function closeAllPopovers() {
+            popovers.forEach(p => p.classList.remove('is-active'));
+            toggleBtns.forEach(b => b.classList.remove('active'));
+        }
+
+        toggleBtns.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                const wrapper = this.closest('.property-action-wrapper');
+                const popover = wrapper ? wrapper.querySelector('.property-seller-popover') : null;
+                
+                if (!popover) return;
+                
+                const isActive = popover.classList.contains('is-active');
+
+                closeAllPopovers();
+
+                if (!isActive) {
+                    popover.classList.add('is-active');
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Close buttons within popover
+        document.querySelectorAll('.popover-close').forEach(btn => {
+            btn.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                closeAllPopovers();
+            });
+        });
+
+        // Close when clicking outside the wrapper
+        document.addEventListener('click', function (e) {
+            if (!e.target.closest('.property-action-wrapper')) {
+                closeAllPopovers();
+            }
+        });
+
+        // Prevent closing when clicking inside popover
+        document.querySelectorAll('.property-seller-popover').forEach(popover => {
+            popover.addEventListener('click', function (e) {
+                e.stopPropagation();
+            });
+        });
+    }
+
+    // Initialize on load
+    initSellerPopovers();
+    // Expose to window for dynamic/ajax content
+    window.initSellerPopovers = initSellerPopovers;
+
     /* ── PREVENT FLASH ON LOAD ── */
     window.addEventListener('load', function () {
         document.body.classList.add('loaded');

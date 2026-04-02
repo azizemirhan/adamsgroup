@@ -1,6 +1,6 @@
-# Cloudflare Workers - Static assets deployment for alfagayrimenkul
+# Cloudflare Workers - Static assets deployment for adamsgroup
 
-name = "alfagayrimenkul"
+name = "adamsgroup"
 compatibility_date = "2026-02-10"
 
 # Static site - tüm HTML, CSS, assets dist klasöründe
