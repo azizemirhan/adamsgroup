@@ -1538,6 +1538,11 @@
     flex-direction: column;
 }
 
+.property-card.popup-is-open {
+    overflow: visible !important;
+    z-index: 101;
+}
+
 .property-card:hover {
     transform: translateY(-10px);
     border-color: rgba(197, 160, 89, 0.3);
@@ -1725,6 +1730,10 @@
     font-weight: 500;
     color: rgba(0, 33, 71, 0.7);
 }
+
+
+
+/* ── Featured Footer ── */
 
 
 /* ═══════════════════════════════════════════════════
@@ -2787,6 +2796,7 @@
     line-height: 1.4;
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -2799,6 +2809,7 @@
     line-height: 1.6;
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -2957,6 +2968,18 @@
         transform 0.6s var(--ease);
 }
 
+/* Scroll Animations Reveal State — Added to fix visibility */
+.revealed,
+.blog-card.revealed,
+.testimonial-card.revealed,
+.property-card.revealed,
+.qf-action-card.revealed,
+.qf-city-card.revealed,
+.reveal.revealed {
+    opacity: 1 !important;
+    transform: translate(0) scale(1) !important;
+}
+
 /* ═══════════════════════════════════════════════════
    QUICK FEATURES & LOCATIONS SECTION
    ═══════════════════════════════════════════════════ */
@@ -2985,48 +3008,52 @@
 .qf-action-card {
     position: relative;
     background: #ffffff;
-    border-radius: 20px;
-    padding: 32px;
+    border-radius: 16px;
+    padding: 24px;
     text-decoration: none;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    text-align: center;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+    gap: 20px;
+    text-align: left;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
     transition: all 0.4s var(--ease);
     border: 1px solid #f3f4f6;
+    min-height: 110px;
 }
 
 .qf-action-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+    transform: translateY(-5px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
     border-color: var(--gold);
 }
 
 .qf-badge {
     position: absolute;
-    top: 15px;
-    right: 15px;
-    background: #ef4444;
+    top: 10px;
+    right: 10px;
+    background: var(--navy);
     color: #fff;
-    font-size: 10px;
+    font-size: 9px;
     font-weight: 700;
     padding: 4px 10px;
-    border-radius: 50px;
+    border-radius: 4px;
     letter-spacing: 0.5px;
+    z-index: 2;
 }
 
 .qf-icon-wrap {
-    width: 70px;
-    height: 70px;
-    background: #f9fafb;
-    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    background: #f8fafc;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 20px;
+    flex-shrink: 0;
     color: var(--navy);
     transition: all 0.4s ease;
+    border: 1px solid rgba(0, 0, 0, 0.03);
 }
 
 .qf-action-card:hover .qf-icon-wrap {
@@ -3035,131 +3062,75 @@
 }
 
 .qf-icon-wrap svg {
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
+}
+
+.qf-content {
+    flex: 1;
 }
 
 .qf-content h3 {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 700;
     color: var(--navy);
-    margin-bottom: 12px;
+    margin-bottom: 4px;
 }
 
 .qf-content p {
-    font-size: 14px;
-    color: #6b7280;
-    line-height: 1.6;
+    font-size: 13px;
+    color: #64748b;
+    line-height: 1.5;
+    margin: 0;
 }
 
-/* Locations Header */
 .qf-locations-header {
     text-align: center;
-    margin-bottom: 50px;
+    margin: 80px 0 50px;
+}
+
+.qf-section-subtitle {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
 }
 
 .qf-section-title {
-    font-size: 36px;
-    font-weight: 800;
-    color: var(--navy);
-    margin-bottom: 10px;
-}
-
-/* ═══════════════════════════════════════════════════
-   QUICK FEATURES & LOCATIONS SECTION
-   ═══════════════════════════════════════════════════ */
-.quick-features-section {
-    position: relative;
-    width: 100%;
-    background: #ffffff !important;
-    padding: 100px 48px;
-    z-index: 10;
-}
-
-.qf-container {
-    max-width: 1440px;
-    margin: 0 auto;
-    width: 100%;
-}
-
-/* Actions Grid (4 Cards) */
-.qf-actions-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-    margin-bottom: 80px;
-}
-
-.qf-action-card {
-    position: relative;
-    background: #ffffff;
-    border-radius: 20px;
-    padding: 32px;
-    text-decoration: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
-    transition: all 0.4s var(--ease);
-    border: 1px solid #f3f4f6;
-    opacity: 1 !important;
-}
-
-.qf-action-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
-    border-color: var(--gold);
-}
-
-.qf-badge {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: #ef4444;
-    color: #fff;
-    font-size: 10px;
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
     font-weight: 700;
-    padding: 4px 10px;
-    border-radius: 50px;
-    letter-spacing: 0.5px;
+    color: var(--navy);
+    margin-bottom: 20px;
 }
 
-.qf-icon-wrap {
-    width: 70px;
-    height: 70px;
-    background: #f9fafb;
-    border-radius: 50%;
+.qf-section-divider {
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 15px;
     margin-bottom: 20px;
-    color: var(--navy);
-    transition: all 0.4s ease;
 }
 
-.qf-action-card:hover .qf-icon-wrap {
-    background: var(--navy);
-    color: var(--gold);
+.qf-section-line {
+    width: 60px;
+    height: 1px;
+    background: rgba(197, 160, 89, 0.3);
 }
 
-.qf-icon-wrap svg {
-    width: 32px;
-    height: 32px;
+.qf-section-diamond {
+    width: 8px;
+    height: 8px;
+    background: var(--gold);
+    transform: rotate(45deg);
 }
 
-.qf-content h3 {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--navy);
-    margin-bottom: 12px;
-}
-
-.qf-content p {
-    font-size: 14px;
-    color: #6b7280;
-    line-height: 1.6;
-}
+/* ═══════════════════════════════════════════════════
+   LOCATIONS GRID
+   ═══════════════════════════════════════════════════ */
 
 /* Locations Grid (5 Columns for Alanya) */
 .qf-locations-grid {
@@ -3231,6 +3202,7 @@
 
 /* Responsive */
 @media (max-width: 1200px) {
+    .qf-actions-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
     .qf-locations-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
